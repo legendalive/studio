@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "projects": [
     {
       "slug": "weaver",
@@ -53,6 +53,29 @@
         { "value": "0", "label": "servers required" }
       ],
       "metricsNote": "Measured by RepoBundle on its own public repository."
+    },
+    {
+      "slug": "swingmatrix",
+      "name": "SwingMatrix",
+      "tagline": "A game-theory and statistical scenario engine for Kenyan elections, where the assumptions are the interface.",
+      "status": "building",
+      "category": "product",
+      "year": 2026,
+      "featured": false,
+      "order": 3,
+      "cover": "",
+      "stack": [],
+      "capabilities": ["design", "ops"],
+      "links": {
+        "app": "",
+        "site": "",
+        "pricing": "",
+        "source": ""
+      },
+      "page": "work/swingmatrix/",
+      "body": "projects/swingmatrix.md",
+      "metrics": [],
+      "metricsNote": "In development. No projections published."
     }
   ],
   "posts": [
