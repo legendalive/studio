@@ -1,0 +1,9 @@
+# Repo: studio — robots.txt — FULL file
+# LegendAlive Studio.
+# Sequencing decision: the is-a.dev domain application is the FINAL phase.
+# The site runs at https://legendalive.github.io/studio/ until then.
+# The Sitemap line is added at cutover, when sitemap.xml exists.
+
+User-agent: *
+Allow: /
+Disallow: /desk/
