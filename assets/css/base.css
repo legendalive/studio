@@ -1,10 +1,11 @@
 /* Repo: studio — assets/css/base.css — FULL file */
 /* LegendAlive Studio — Blueprint & Forge.
-   Revision R1: editorial layout, no decorative chrome. Palette unchanged.
+   Revision R2: fluid frame (wide monitors use the space), System Map styles,
+   home writing/updates surfaces. Palette unchanged from R1.
    Single CSS source (T4): shell.js injects this sheet via BASE; pages carry
-   only a <noscript> fallback link. Phase 1 splits shell/components out. */
+   only a <noscript> fallback link. Component rules live in components.css. */
 
-/* ---------- 1. Tokens (plan 6.2–6.5, exact values) ---------- */
+/* ---------- 1. Tokens ---------- */
 :root {
   --ink-900: #06080b;
   --ink-800: #0b0f14;
@@ -103,7 +104,11 @@ p { max-width: 68ch; }
 html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 
 /* ---------- 5. Utilities ---------- */
-.container { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+.container {
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4.5vw, 64px);
+}
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; margin: -1px;
   clip-path: inset(50%); overflow: hidden; white-space: nowrap;
@@ -137,7 +142,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 }
 .text-link:hover { text-decoration-color: var(--blueprint); }
 
-/* ---------- 6. The studio mark (plan 6.8, unchanged) ---------- */
+/* ---------- 6. The studio mark ---------- */
 .studio-mark {
   display: inline-block; flex: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230b3a55'/%3E%3Cstop offset='.32' stop-color='%2338bdf8'/%3E%3Cstop offset='.5' stop-color='%23eaf6ff'/%3E%3Cstop offset='.68' stop-color='%230ea5e9'/%3E%3Cstop offset='1' stop-color='%230b3a55'/%3E%3C/linearGradient%3E%3CradialGradient id='n' cx='.35' cy='.35' r='.9'%3E%3Cstop offset='0' stop-color='%23f4fbff'/%3E%3Cstop offset='.55' stop-color='%2338bdf8'/%3E%3Cstop offset='1' stop-color='%230b3a55'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ffffff' stop-opacity='.55'/%3E%3Cstop offset='1' stop-color='%23ffffff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M22 14v34h30' fill='none' stroke='%2304121d' stroke-width='8.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 14v34h30' fill='none' stroke='url(%23m)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 14v34h30' fill='none' stroke='%23eaf6ff' stroke-opacity='.8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 48v-9' fill='none' stroke='%2338bdf8' stroke-width='3.5' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='48' r='5' fill='url(%23n)' stroke='%2304121d' stroke-width='2'/%3E%3Ccircle cx='22' cy='15' r='6' fill='url(%23b)'/%3E%3C/svg%3E") center / contain no-repeat;
@@ -189,7 +194,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 .nav-sheet { display: none; }
 
 /* ---------- 8. Opening ---------- */
-.opening { position: relative; padding: calc(var(--nav-h) + 96px) 0 96px; }
+.opening { position: relative; padding: calc(var(--nav-h) + 72px) 0 80px; }
 .opening::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image:
@@ -201,16 +206,19 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 }
 .opening-grid {
   position: relative;
-  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: 48px; align-items: end;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
 }
-.opening-side { display: grid; gap: 24px; justify-items: start; padding-bottom: 6px; }
+.opening-copy { display: grid; gap: 24px; justify-items: start; }
 .opening-lede { font-size: 18px; color: var(--muted); max-width: 46ch; }
+.map-mount { width: 100%; max-width: 820px; min-width: 0; justify-self: end; }
 
 /* ---------- 9. Work ledger ---------- */
 .work-entry {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 48px; padding: 48px 0;
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(24px, 4vw, 72px); padding: 48px 0;
 }
 .work-entry + .work-entry { border-top: 1px solid var(--line); }
 .work-id { display: grid; gap: 12px; align-content: start; justify-items: start; }
@@ -231,11 +239,12 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 .work-body p { color: var(--paper); max-width: 62ch; }
 .work-body p + p { color: var(--muted); }
 
-/* ---------- 10. Capabilities spec list ---------- */
+/* ---------- 10. Capabilities ---------- */
 .caps { display: grid; }
 .cap-row {
   display: grid; grid-template-columns: 240px minmax(0, 1fr);
   gap: 24px; padding: 20px 0;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
 }
 .cap-row + .cap-row { border-top: 1px solid var(--line); }
 .cap-term { font-size: 16px; font-weight: 600; align-self: baseline; }
@@ -291,22 +300,113 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
   font: 400 12px var(--font-mono); color: var(--faint);
 }
 
-/* ---------- 14. Motion ---------- */
+/* ---------- 14. System Map ---------- */
+.map { display: grid; gap: 12px; }
+.map-stage {
+  position: relative;
+  border: 1px solid var(--line); border-radius: var(--r-panel);
+  background: rgba(11, 15, 20, .55);
+  overflow: hidden;
+}
+.map-stage::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, .05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map-canvas { position: relative; display: block; width: 100%; }
+.map-canvas:focus-visible { outline: 2px solid var(--blueprint); outline-offset: -2px; border-radius: var(--r-panel); }
+.map-canvas svg { width: 100%; height: auto; aspect-ratio: 640 / 470; }
+
+.map-edge { stroke: var(--line-strong); stroke-width: 1; opacity: .5; }
+.map-edge.is-lit { stroke: var(--blueprint); stroke-width: 1.5; opacity: .9; }
+.map-edge.is-hidden { display: none; }
+
+.map-node { cursor: pointer; }
+.map-node.is-hidden { display: none; }
+.map-node-ring { stroke: var(--blueprint); stroke-opacity: .4; stroke-width: 1.5; opacity: 0; }
+.map-node.is-active .map-node-ring { opacity: 1; }
+.map-node-core { fill: var(--ink-700); stroke: var(--line-strong); stroke-width: 1.5; }
+.map-node--capability .map-node-core { fill: var(--ink-800); stroke: rgba(56, 189, 248, .55); }
+.map-node--live .map-node-core { stroke: var(--shipped); }
+.map-node--building .map-node-core { stroke: var(--forge); }
+.map-node--lab .map-node-core { stroke: var(--lab); }
+.map-node--paused .map-node-core { stroke: var(--faint); }
+.map-node-dot { fill: var(--blueprint); }
+.map-node--live .map-node-dot { fill: var(--shipped); }
+.map-node--building .map-node-dot { fill: var(--forge); }
+.map-node--lab .map-node-dot { fill: var(--lab); }
+.map-node--paused .map-node-dot { fill: var(--faint); }
+.map-label { font: 500 11px var(--font-mono); fill: var(--muted); }
+.map-node--capability .map-label { font-size: 10.5px; fill: var(--faint); }
+.map-node.is-active .map-label, .map-node.is-neighbor .map-label { fill: var(--paper); }
+.map.has-active .map-node:not(.is-active):not(.is-neighbor) { opacity: .25; }
+.map.has-active .map-edge:not(.is-lit) { opacity: .12; }
+
+.map-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.map-controls .btn--sm { min-height: 44px; }
+
+.map-card {
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--ink-800);
+  padding: 18px 20px; min-height: 132px;
+  display: grid; gap: 8px; align-content: start;
+}
+.map-card-kind {
+  font: 500 11px var(--font-mono); color: var(--faint);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.map-card h3 { font-size: 18px; }
+.map-card p { font-size: 14px; color: var(--muted); }
+.map-card-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.map-card .btn { justify-self: start; }
+.map-card-hint { color: var(--faint); font-size: 13px; }
+
+.map-list { display: none; list-style: none; padding: 0; margin: 0; gap: 8px; }
+.map-list-item {
+  width: 100%; text-align: left; display: grid; gap: 3px;
+  padding: 14px 16px; min-height: 44px;
+  border: 1px solid var(--line); border-radius: var(--r-control);
+  background: var(--ink-800); cursor: pointer;
+}
+.map-list-item:hover { border-color: var(--line-strong); }
+.map-list-name { font: 600 15px var(--font-display); color: var(--paper); }
+.map-list-meta { font: 400 11px var(--font-mono); color: var(--faint); }
+.map-list-desc { font-size: 13px; color: var(--muted); }
+
+.map-loading { color: var(--faint); font: 400 13px var(--font-mono); padding: 24px 4px; }
+.map-noscript {
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  padding: 20px; display: grid; gap: 10px; background: var(--ink-800);
+}
+.map-noscript p { font: 600 12px var(--font-mono); color: var(--faint); letter-spacing: .08em; text-transform: uppercase; }
+.map-noscript ul { list-style: none; padding: 0; display: grid; gap: 6px; }
+
+/* ---------- 15. Motion (guarded) ---------- */
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
+  .map-node, .map-edge { transition: opacity var(--t-std); }
+  .map-node-ring, .map-node-core, .map-label { transition: opacity var(--t-std), stroke var(--t-std), fill var(--t-std); }
+  .map-list-item { transition: border-color var(--t-micro); }
+  .cap-row.is-flash { animation: cap-flash 1.2s var(--ease-enter); }
+}
+@keyframes cap-flash {
+  0% { background: var(--blueprint-soft); }
+  100% { background: transparent; }
 }
 
-/* ---------- 15. Responsive ---------- */
+/* ---------- 16. Responsive ---------- */
 @media (max-width: 1020px) {
-  .opening-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
-  .opening-side { padding-bottom: 0; }
+  .opening-grid { grid-template-columns: 1fr; gap: 40px; align-items: start; }
+  .map-mount { justify-self: stretch; max-width: 760px; }
   .work-entry { grid-template-columns: 1fr; gap: 20px; }
   .work-id { gap: 8px; }
   .work-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 4px; }
 }
 @media (max-width: 860px) {
   .section { padding: 64px 0; }
-  .opening { padding: calc(var(--nav-h) + 64px) 0 64px; }
+  .opening { padding: calc(var(--nav-h) + 56px) 0 64px; }
   .js .nav-links { display: none; }
   .js .nav-toggle { display: inline-flex; }
   .js .nav-sheet {
@@ -326,6 +426,11 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
   .nav-sheet .nav-sheet-note { margin-top: auto; font: 400 12px var(--font-mono); color: var(--faint); }
   html:not(.js) .nav-links { flex-wrap: wrap; }
   html:not(.js) .nav-links a { min-height: 40px; padding: 0 8px; font-size: 13px; }
+
+  .map-stage { display: none; }
+  .map-card { display: none; }
+  .map-list { display: grid; }
+
   .cap-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
   .developer-grid { grid-template-columns: 1fr; gap: 24px; }
   .developer-grid .studio-mark { width: 64px; height: 64px; }
@@ -335,4 +440,5 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 @media (max-width: 480px) {
   .container { padding-inline: 16px; }
   .work-entry { padding: 40px 0; }
+  .map-controls { gap: 6px; }
 }
