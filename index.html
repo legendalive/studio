@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LegendAlive Studio — Complete products, not demos.</title>
-  <meta name="description" content="LegendAlive Studio is the one-person software studio of Benson Mtsotso. Shipped products, engineering case studies and technical writing. No framework, no bundler, no build step.">
+  <title>LegendAlive Studio — We build software and keep it running.</title>
+  <meta name="description" content="LegendAlive Studio is an independent software studio. Its products include Weaver, a browser-based novel-writing studio, and RepoBundle, a client-side codebase bundler for AI workflows.">
   <meta name="author" content="Benson Mtsotso">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#06080b">
@@ -13,25 +13,22 @@
   <link rel="canonical" href="https://legendalive.github.io/studio/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LegendAlive Studio">
-  <meta property="og:title" content="LegendAlive Studio — Complete products, not demos.">
-  <meta property="og:description" content="The one-person software studio of Benson Mtsotso. Shipped products, engineering case studies and technical writing.">
+  <meta property="og:title" content="LegendAlive Studio — We build software and keep it running.">
+  <meta property="og:description" content="An independent software studio. Products in production, engineering case studies, technical writing and release notes.">
   <meta property="og:url" content="https://legendalive.github.io/studio/">
   <meta name="twitter:card" content="summary">
-  <!-- og:image is added in Phase 8 when assets/img/og-default.png exists.
-       Favicon is injected as a data-URI by brand.js; the static favicon.svg
-       fallback link arrives in Step 3. -->
+  <!-- og:image arrives with assets/img/og-default.png in Phase 8.
+       Favicon is injected as a data-URI by brand.js; static fallback in Step 3. -->
 
-  <!-- Critical canvas colour: prevents a white flash before the shell injects
-       base.css. Applies with or without JS. body colours live in base.css. -->
+  <!-- Critical canvas colour before the shell injects base.css. -->
   <style>html{background:#06080b;color-scheme:dark}</style>
   <noscript><link rel="stylesheet" href="assets/css/base.css"></noscript>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- The only depth-sensitive path on this page (root depth). shell.js
-       injects all stylesheets from BASE and wires nav, year and reveals. -->
+  <!-- The only depth-sensitive path on this page (root depth). -->
   <script type="module" src="assets/js/shell.js"></script>
 </head>
 <body>
@@ -46,9 +43,10 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#work">Work</a>
         <a href="#capabilities">Capabilities</a>
+        <a href="#developer">The developer</a>
+        <a href="#contact">Contact</a>
         <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
       </nav>
-      <a class="btn btn--primary btn--sm nav-cta" href="#contact">Contact</a>
       <button class="nav-toggle" type="button" data-nav-toggle
               aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
@@ -57,325 +55,203 @@
     <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
       <a href="#work">Work</a>
       <a href="#capabilities">Capabilities</a>
+      <a href="#developer">The developer</a>
       <a href="#contact">Contact</a>
       <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio — hand-built, no framework.</span>
+      <span class="nav-sheet-note">LegendAlive Studio</span>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ================= HERO ================= -->
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-light" aria-hidden="true"></div>
-      <div class="container hero-grid" data-reveal-group>
-        <div class="hero-copy">
-          <p class="micro" data-reveal>LegendAlive Studio</p>
-          <h1 id="hero-title" data-reveal>I build complete products,<br>not demos.</h1>
-          <p class="lede" data-reveal>
-            The one-person software studio of Benson Mtsotso. Each product is
-            shipped end to end — the editor, the sync layer, the backend, the
-            payments, the pipeline — and the engineering behind it is written down.
+    <!-- ================= OPENING ================= -->
+    <section class="opening" id="top" aria-labelledby="opening-title">
+      <div class="container opening-grid">
+        <h1 id="opening-title">We build software and keep it running.</h1>
+        <div class="opening-side">
+          <p class="opening-lede">
+            LegendAlive Studio is an independent software studio. We design,
+            build and operate our own products: interface, engine, backend,
+            billing, deployment.
           </p>
-          <div class="hero-actions" data-reveal>
-            <a class="btn btn--primary" href="#work">See the work</a>
-            <a class="btn btn--ghost" href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a>
-          </div>
-          <div class="hero-metrics" data-reveal>
-            <div class="hero-metric"><b>2</b><span>products live</span></div>
-            <div class="hero-metric"><b>16,414</b><span>lines of source in Weaver</span></div>
-            <div class="hero-metric"><b>0</b><span>runtime dependencies on this site</span></div>
-          </div>
+          <a class="text-link" href="#work">See the work</a>
         </div>
-
-        <!-- Static studio schematic. Replaced by the live System Map in Phase 3. -->
-        <figure class="hero-visual" data-reveal>
-          <svg viewBox="0 0 560 440" role="img" aria-labelledby="schematic-title">
-            <title id="schematic-title">Schematic of the studio: two live products, Weaver and RepoBundle, connected to eight shared engineering capabilities.</title>
-            <defs>
-              <pattern id="bp" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0v40" fill="none" stroke="#38bdf8" stroke-opacity=".07"/>
-              </pattern>
-            </defs>
-            <rect width="560" height="440" fill="url(#bp)"/>
-            <path d="M12 24V12h12M536 12h12v12M548 416v12h-12M24 428H12v-12" fill="none" stroke="#3b4a5c" stroke-width="1.5"/>
-            <!-- edges: products to studio -->
-            <path d="M150 128 262 208M410 128 298 208" stroke="#38bdf8" stroke-opacity=".4" stroke-width="1.5" fill="none"/>
-            <!-- edges: studio to capabilities -->
-            <path d="M280 236 66 330M280 236 127 330M280 236 188 330M280 236 249 330M280 236 310 330M280 236 371 330M280 236 432 330M280 236 494 330" stroke="#38bdf8" stroke-opacity=".22" stroke-width="1" fill="none"/>
-            <!-- product nodes -->
-            <circle cx="130" cy="112" r="22" fill="#121821" stroke="#34d399" stroke-width="1.5"/>
-            <circle cx="130" cy="112" r="4" fill="#34d399"/>
-            <text x="130" y="156" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#e8eef5">WEAVER</text>
-            <text x="130" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#93a3b5">novel studio · live</text>
-            <circle cx="430" cy="112" r="22" fill="#121821" stroke="#34d399" stroke-width="1.5"/>
-            <circle cx="430" cy="112" r="4" fill="#34d399"/>
-            <text x="430" y="156" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#e8eef5">REPOBUNDLE</text>
-            <text x="430" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#93a3b5">dev tooling · live</text>
-            <!-- dimension annotations -->
-            <path d="M78 196h104M78 192v8M182 192v8" stroke="#3b4a5c" stroke-width="1" fill="none"/>
-            <text x="130" y="212" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">16,414 LOC</text>
-            <path d="M378 196h104M378 192v8M482 192v8" stroke="#3b4a5c" stroke-width="1" fill="none"/>
-            <text x="430" y="212" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">3,927 LOC</text>
-            <!-- studio node -->
-            <circle cx="280" cy="222" r="27" fill="#1a222d" stroke="#38bdf8" stroke-width="1.5"/>
-            <path d="M272 210v22h18" fill="none" stroke="#f5a524" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="272" cy="232" r="3.5" fill="#38bdf8"/>
-            <text x="280" y="270" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#93a3b5">STUDIO</text>
-            <!-- capability nodes -->
-            <g font-family="JetBrains Mono, monospace" font-size="8.5" fill="#64748b" text-anchor="middle">
-              <circle cx="66" cy="330" r="7" fill="#121821" stroke="#38bdf8" stroke-opacity=".6"/><text x="66" y="352">editor</text>
-              <circle cx="127" cy="330" r="7" fill="#121821" stroke="#38bdf8" stroke-opacity=".6"/><text x="127" y="352">sync</text>
-              <circle cx="188" cy="330" r="7" fill="#121821" stroke="#38bdf8" stroke-opacity=".6"/><text x="188" y="352">ai</text>
-              <circle cx="249" cy="330" r="7" fill="#121821" stroke="#38bdf8" stroke-opacity=".6"/><text x="249" y="352">serverless</text>
-              <circle cx="310" cy="330" r="7" fill="#121821" stroke="#38bdf8" stroke-opacity=".6"/><text x="310" y="352">payments</text>
-              <circle cx="371" cy="330" r="7" fill="#121821" stroke="#f5a524" stroke-opacity=".7"/><text x="371" y="352">ops</text>
-              <circle cx="432" cy="330" r="7" fill="#121821" stroke="#f5a524" stroke-opacity=".7"/><text x="432" y="352">design</text>
-              <circle cx="494" cy="330" r="7" fill="#121821" stroke="#f5a524" stroke-opacity=".7"/><text x="494" y="352">tooling</text>
-            </g>
-            <text x="280" y="408" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">shared capabilities · one studio · every edge is a real dependency</text>
-          </svg>
-          <figcaption>fig. 01 — two products, one set of capabilities.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ================= THE STUDIO ================= -->
-    <section class="section section--alt" id="studio" aria-labelledby="studio-title">
-      <div class="container studio-grid">
-        <div class="studio-copy" data-reveal-group>
-          <p class="micro" data-reveal>The studio</p>
-          <h2 id="studio-title" data-reveal>One person. Whole systems.</h2>
-          <p data-reveal>
-            LegendAlive Studio designs, builds, ships and operates complete
-            products: editor engines, offline sync, serverless backends,
-            commercial plumbing, CI — and then writes down what broke.
-          </p>
-          <p data-reveal>
-            Every claim on this site points at something you can open: a live
-            app, a public repository, or a written decision with the alternative
-            it rejected. Numbers instead of adjectives.
-          </p>
-          <ul class="principles" role="list" data-reveal>
-            <li class="chip-stack">Own your files</li>
-            <li class="chip-stack">Ship complete things</li>
-            <li class="chip-stack">Write down what broke</li>
-          </ul>
-        </div>
-        <aside class="studio-aside" data-reveal>
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <p class="editorial">“The studio is the engineering parent; Weaver is the literary child.”</p>
-          <p style="color:var(--muted);font-size:14px">
-            This site is itself the demonstration: hand-built HTML, CSS and
-            native ES modules. No framework, no bundler, no build step.
-          </p>
-        </aside>
       </div>
     </section>
 
     <!-- ================= WORK ================= -->
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
-        <div class="section-head" data-reveal-group>
-          <p class="micro" data-reveal>Selected work</p>
-          <h2 id="work-title" data-reveal>Shipped and running.</h2>
-          <p class="lede" data-reveal>Two live products. Open either one — they are the evidence.</p>
+        <div class="section-head">
+          <h2 id="work-title">Work</h2>
         </div>
 
-        <div class="work-grid" data-reveal-group>
-          <!-- Weaver -->
-          <article class="project-card" data-reveal>
-            <div class="project-cover">
-              <svg viewBox="0 0 640 360" role="img" aria-labelledby="weaver-cover-title">
-                <title id="weaver-cover-title">Weaver's three-panel workflow: a raw manuscript, the finalized main novel, and an AI output panel where every block is accepted or discarded by the author.</title>
-                <rect width="640" height="360" fill="#0b0f14"/>
-                <g stroke="#38bdf8" stroke-opacity=".05"><path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/></g>
-                <g font-family="JetBrains Mono, monospace" font-size="11" fill="#93a3b5">
-                  <rect x="28" y="42" width="176" height="276" rx="10" fill="#121821" stroke="#2b3745"/>
-                  <text x="44" y="68">MANUSCRIPT</text>
-                  <rect x="232" y="42" width="176" height="276" rx="10" fill="#121821" stroke="#f5a524" stroke-opacity=".5"/>
-                  <text x="248" y="68" fill="#f5a524">MAIN NOVEL</text>
-                  <rect x="436" y="42" width="176" height="276" rx="10" fill="#121821" stroke="#2b3745"/>
-                  <text x="452" y="68">AI OUTPUT</text>
-                </g>
-                <g fill="#e8eef5" fill-opacity=".14">
-                  <rect x="44" y="88" width="140" height="7" rx="3.5"/><rect x="44" y="104" width="120" height="7" rx="3.5"/><rect x="44" y="120" width="146" height="7" rx="3.5"/><rect x="44" y="136" width="96" height="7" rx="3.5"/><rect x="44" y="160" width="140" height="7" rx="3.5"/><rect x="44" y="176" width="110" height="7" rx="3.5"/><rect x="44" y="192" width="134" height="7" rx="3.5"/>
-                </g>
-                <g fill="#f5a524" fill-opacity=".28">
-                  <rect x="248" y="88" width="140" height="7" rx="3.5"/><rect x="248" y="104" width="118" height="7" rx="3.5"/><rect x="248" y="120" width="146" height="7" rx="3.5"/><rect x="248" y="136" width="100" height="7" rx="3.5"/><rect x="248" y="160" width="128" height="7" rx="3.5"/>
-                </g>
-                <g fill="#38bdf8" fill-opacity=".22">
-                  <rect x="452" y="88" width="140" height="7" rx="3.5"/><rect x="452" y="104" width="124" height="7" rx="3.5"/><rect x="452" y="120" width="146" height="7" rx="3.5"/>
-                </g>
-                <g stroke="#34d399" stroke-width="1.5" fill="none">
-                  <rect x="452" y="146" width="64" height="20" rx="6"/>
-                  <path d="M436 156h-14m0 0 6-5m-6 5 6 5"/>
-                </g>
-                <text x="484" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#34d399">accept</text>
-                <path d="M204 210h20m0 0-6-5m6 5-6 5" stroke="#f5a524" stroke-width="1.5" fill="none"/>
-                <text x="320" y="336" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">every acceptance is a cut — nothing enters canon without a human decision</text>
-              </svg>
+        <article class="work-entry" aria-labelledby="weaver-name">
+          <div class="work-id">
+            <h3 class="work-name" id="weaver-name">Weaver</h3>
+            <p class="work-meta">2026 · novel-writing studio</p>
+            <p class="work-stack">Native ES modules · Supabase · Deno · Postgres · Cloudflare Pages</p>
+            <div class="work-links">
+              <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Open the app <span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Product site <span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Pricing <span class="arrow" aria-hidden="true">↗</span></a>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3>Weaver</h3>
-                <span class="chip-status chip-status--live">Live</span>
-                <span class="project-meta">product · 2026</span>
-              </div>
-              <p class="project-tagline">A privacy-first novel-writing studio that runs entirely in the browser.</p>
-              <div class="metric-row">
-                <div class="metric-tile"><b>16,414</b><span>lines of source</span></div>
-                <div class="metric-tile"><b>0</b><span>runtime dependencies</span></div>
-                <div class="metric-tile"><b>8</b><span>edge functions</span></div>
-              </div>
-              <div class="stack-row">
-                <span class="chip-stack">ES Modules</span>
-                <span class="chip-stack">Supabase</span>
-                <span class="chip-stack">Deno</span>
-                <span class="chip-stack">Postgres</span>
-                <span class="chip-stack">Cloudflare Pages</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn--primary btn--sm" href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Open app</a>
-                <a class="btn btn--ghost btn--sm" href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Marketing site</a>
-                <a class="btn btn--ghost btn--sm" href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Pricing</a>
-              </div>
-            </div>
-          </article>
+          </div>
+          <div class="work-body">
+            <p>
+              A novel-writing studio that runs entirely in the browser. The
+              author works on a raw manuscript alongside the finished book,
+              and an AI panel proposes changes that enter the book only when
+              the author accepts them. Work is stored locally first and
+              synced to a private, compressed cloud vault.
+            </p>
+            <p>
+              The editor is built from scratch: a virtualised block engine
+              that indexes a 1.8 MB manuscript in about 2.8 ms and keeps a
+              whole novel scrollable on a phone.
+            </p>
+          </div>
+        </article>
 
-          <!-- RepoBundle -->
-          <article class="project-card" data-reveal>
-            <div class="project-cover">
-              <svg viewBox="0 0 640 360" role="img" aria-labelledby="repobundle-cover-title">
-                <title id="repobundle-cover-title">RepoBundle's pipeline: a zipped repository with a nested file tree becomes one verbatim CODEBASE.md file, ready as AI context.</title>
-                <rect width="640" height="360" fill="#0b0f14"/>
-                <g stroke="#38bdf8" stroke-opacity=".05"><path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/></g>
-                <rect x="36" y="52" width="200" height="256" rx="10" fill="#121821" stroke="#2b3745"/>
-                <text x="52" y="78" font-family="JetBrains Mono, monospace" font-size="11" fill="#93a3b5">repo.zip</text>
-                <g font-family="JetBrains Mono, monospace" font-size="10" fill="#93a3b5">
-                  <text x="52" y="106" fill="#f5a524">├── src/</text>
-                  <text x="52" y="126">│   ├── app.tsx</text>
-                  <text x="52" y="146">│   ├── utils/</text>
-                  <text x="52" y="166">│   └── main.tsx</text>
-                  <text x="52" y="186" fill="#f5a524">├── docs/</text>
-                  <text x="52" y="206">├── tests/</text>
-                  <text x="52" y="226">└── package.json</text>
-                </g>
-                <g stroke="#f5a524" stroke-width="2" fill="none">
-                  <path d="M252 180h116m0 0-10-8m10 8-10 8"/>
-                </g>
-                <text x="310" y="164" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#f5a524">bundle · verbatim</text>
-                <rect x="392" y="52" width="212" height="256" rx="10" fill="#121821" stroke="#f5a524" stroke-opacity=".55"/>
-                <text x="408" y="78" font-family="JetBrains Mono, monospace" font-size="11" fill="#f5a524">CODEBASE.md</text>
-                <g fill="#e8eef5" fill-opacity=".14">
-                  <rect x="408" y="94" width="180" height="6" rx="3"/><rect x="408" y="108" width="150" height="6" rx="3"/><rect x="408" y="122" width="176" height="6" rx="3"/><rect x="408" y="136" width="130" height="6" rx="3"/><rect x="408" y="150" width="180" height="6" rx="3"/><rect x="408" y="164" width="160" height="6" rx="3"/><rect x="408" y="178" width="176" height="6" rx="3"/><rect x="408" y="192" width="140" height="6" rx="3"/><rect x="408" y="206" width="180" height="6" rx="3"/><rect x="408" y="220" width="120" height="6" rx="3"/>
-                </g>
-                <g stroke="#34d399" fill="none"><rect x="408" y="248" width="128" height="22" rx="6"/></g>
-                <text x="472" y="263" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#34d399">100% unedited</text>
-                <text x="320" y="336" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">entirely in your browser — zero files leave your device</text>
-              </svg>
+        <article class="work-entry" aria-labelledby="repobundle-name">
+          <div class="work-id">
+            <h3 class="work-name" id="repobundle-name">RepoBundle</h3>
+            <p class="work-meta">2026 · developer tool</p>
+            <p class="work-stack">React · TypeScript · Vite · Tailwind CSS · JSZip</p>
+            <div class="work-links">
+              <a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">Open the tool <span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">Source code <span class="arrow" aria-hidden="true">↗</span></a>
             </div>
-            <div class="project-body">
-              <div class="project-top">
-                <h3>RepoBundle</h3>
-                <span class="chip-status chip-status--live">Live</span>
-                <span class="project-meta">tool · 2026</span>
-              </div>
-              <p class="project-tagline">Turn any zipped codebase into one verbatim, AI-ready context file — entirely in your browser.</p>
-              <div class="metric-row">
-                <div class="metric-tile"><b>0</b><span>servers required</span></div>
-                <div class="metric-tile"><b>100%</b><span>verbatim output</span></div>
-                <div class="metric-tile"><b>3,927</b><span>lines of source</span></div>
-              </div>
-              <p class="project-note">Measured by RepoBundle on its own repository: 24 files, 3,927 lines.</p>
-              <div class="stack-row">
-                <span class="chip-stack">React</span>
-                <span class="chip-stack">TypeScript</span>
-                <span class="chip-stack">Vite</span>
-                <span class="chip-stack">Tailwind CSS</span>
-                <span class="chip-stack">JSZip</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn--primary btn--sm" href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">Open app</a>
-                <a class="btn btn--ghost btn--sm" href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">Source</a>
-              </div>
-            </div>
-          </article>
-        </div>
+          </div>
+          <div class="work-body">
+            <p>
+              A developer tool that turns a zipped repository into a single
+              file ready for an AI model's context window. The source is
+              preserved verbatim, with a generated file tree and per-language
+              bundles alongside it.
+            </p>
+            <p>
+              Everything runs in the browser. The repository never leaves
+              the machine, and large archives are processed in chunks so the
+              tab stays responsive.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ================= CAPABILITIES ================= -->
     <section class="section section--alt" id="capabilities" aria-labelledby="cap-title">
       <div class="container">
-        <div class="section-head" data-reveal-group>
-          <p class="micro" data-reveal>What I actually do</p>
-          <h2 id="cap-title" data-reveal>Eight capabilities, each with a receipt.</h2>
+        <div class="section-head">
+          <h2 id="cap-title">Capabilities</h2>
         </div>
-        <div class="cap-grid" data-reveal-group>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">01</span>
-            <h3>Editor engineering</h3>
-            <p>A virtualized contenteditable block engine that indexes 1.8&nbsp;MB of prose in about 2.8&nbsp;ms.</p>
-            <a class="cap-evidence" href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Evidence: Weaver →</a>
+        <div class="caps">
+          <div class="cap-row">
+            <h3 class="cap-term">Editor engineering</h3>
+            <p class="cap-desc">
+              The engine inside <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>:
+              a virtualised, block-indexed contenteditable built for book-length manuscripts.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">02</span>
-            <h3>Offline-first sync</h3>
-            <p>Local-first storage, a gzip-compressed cloud vault, and failover that tells the truth.</p>
-            <a class="cap-evidence" href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Evidence: Weaver →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">Offline-first sync</h3>
+            <p class="cap-desc">
+              Local-first storage with a gzip-compressed private vault and failover that
+              reports honestly, running in <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">03</span>
-            <h3>AI integration</h3>
-            <p>Four providers behind one interface; every model discovered at runtime, none hardcoded.</p>
-            <a class="cap-evidence" href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Evidence: Weaver →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">AI integration</h3>
+            <p class="cap-desc">
+              Four providers behind one interface in <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>,
+              with every model discovered at runtime rather than pinned.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">04</span>
-            <h3>Serverless backend</h3>
-            <p>Eight Supabase Edge Functions on Deno; the service key never leaves the platform.</p>
-            <a class="cap-evidence" href="https://weaver-studio.pages.dev/features" target="_blank" rel="noopener">Evidence: Weaver features →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">Serverless backend</h3>
+            <p class="cap-desc">
+              Eight Supabase edge functions on Deno carry
+              <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver's</a>
+              server side. Service keys never leave the platform.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">05</span>
-            <h3>Commercial plumbing</h3>
-            <p>Gumroad as merchant of record, three tiers, fulfilment through a purpose-built admin console.</p>
-            <a class="cap-evidence" href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Evidence: pricing →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">Commercial plumbing</h3>
+            <p class="cap-desc">
+              Gumroad as merchant of record, three tiers, and an admin console that handles
+              fulfilment for <a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver</a>.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">06</span>
-            <h3>CI &amp; operations</h3>
-            <p>Every push to main deploys through GitHub Actions — including the page you are reading.</p>
-            <a class="cap-evidence" href="https://github.com/legendalive/studio" target="_blank" rel="noopener">Evidence: this site's source →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">CI &amp; operations</h3>
+            <p class="cap-desc">
+              Push-to-deploy through GitHub Actions on every repository,
+              <a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">this one</a> included.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">07</span>
-            <h3>Product &amp; interface</h3>
-            <p>Design systems, path-drawn SVG brand marks, and mobile layouts that keep every feature reachable.</p>
-            <a class="cap-evidence" href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Evidence: Weaver site →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">Product &amp; interface</h3>
+            <p class="cap-desc">
+              Design systems, mobile layouts that keep every feature reachable, and brand
+              marks drawn as SVG paths rather than fonts.
+            </p>
           </div>
-          <div class="cap-row" data-reveal>
-            <span class="cap-num">08</span>
-            <h3>Developer tooling</h3>
-            <p>Client-side ZIP streaming, verbatim bundling and tree generation — a whole codebase in one AI-ready file.</p>
-            <a class="cap-evidence" href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">Evidence: RepoBundle →</a>
+          <div class="cap-row">
+            <h3 class="cap-term">Developer tooling</h3>
+            <p class="cap-desc">
+              <a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle</a>
+              packages whole repositories for AI context without a server.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE DEVELOPER ================= -->
+    <section class="section" id="developer" aria-labelledby="developer-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="developer-title">The developer</h2>
+        </div>
+        <div class="developer-grid">
+          <span class="studio-mark studio-mark--lg" aria-hidden="true"></span>
+          <div class="developer-body">
+            <p>
+              LegendAlive Studio is the practice of one developer:
+              <strong>Benson Mtsotso</strong>. He designs, builds and operates
+              everything the studio ships, from the editor engine to the
+              deployment pipeline.
+            </p>
+            <p>
+              He works from Kenya and keeps a simple method: small verified
+              steps, decisions written down with the alternatives they
+              rejected, and a log of what broke.
+            </p>
+            <div class="developer-links">
+              <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile <span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="mailto:mbenson.mb62@gmail.com">mbenson.mb62@gmail.com</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ================= CONTACT ================= -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="contact-band" data-reveal>
-          <p class="micro">Contact</p>
-          <h2 id="contact-title">Start a conversation.</h2>
-          <p>One inbox, read by the person who builds the things. Product ideas, engineering problems, writing — all welcome.</p>
-          <div class="contact-actions">
-            <a class="btn btn--forge" href="mailto:mbenson.mb62@gmail.com">Email Benson</a>
-            <a class="btn btn--ghost" href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <p class="contact-note">For Weaver product support, please use the in-app Support window rather than this address — it carries your account context with it.</p>
+        <div class="section-head">
+          <h2 id="contact-title">Contact</h2>
+        </div>
+        <div class="contact-grid">
+          <p>
+            Email is the best way to reach the studio. Product questions,
+            engineering work, writing: it all arrives at the same desk.
+          </p>
+          <a class="contact-mail" href="mailto:mbenson.mb62@gmail.com">mbenson.mb62@gmail.com</a>
+          <p class="contact-note">
+            Weaver product support goes through the in-app Support window,
+            which carries your account context with it.
+          </p>
         </div>
       </div>
     </section>
@@ -387,32 +263,39 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <p><strong>LegendAlive Studio</strong><br>Complete products, not demos.</p>
-          <p class="footer-copy">© <span data-year>2026</span> Benson Mtsotso</p>
+          <span class="footer-brand-name">LegendAlive Studio</span>
+          <p class="footer-tagline">We build software and keep it running.</p>
         </div>
-        <nav class="footer-col" aria-label="Explore">
-          <h3>Explore</h3>
+        <nav class="footer-col" aria-label="Studio">
+          <h3>Studio</h3>
           <ul role="list">
             <li><a href="#work">Work</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#developer">The developer</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
           </ul>
         </nav>
         <nav class="footer-col" aria-label="Products">
           <h3>Products</h3>
           <ul role="list">
             <li><a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver app</a></li>
-            <li><a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Weaver site</a></li>
+            <li><a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Weaver product site</a></li>
             <li><a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver pricing</a></li>
             <li><a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle app</a></li>
             <li><a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">RepoBundle source</a></li>
           </ul>
         </nav>
+        <nav class="footer-col" aria-label="Elsewhere">
+          <h3>Elsewhere</h3>
+          <ul role="list">
+            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
+            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
+            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
+          </ul>
+        </nav>
       </div>
       <div class="footer-bottom">
-        <span>Hand-built: no framework, no bundler, no build step.</span>
-        <a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">View this site's source →</a>
+        <span>© <span data-year>2026</span> Benson Mtsotso</span>
       </div>
     </div>
   </footer>
