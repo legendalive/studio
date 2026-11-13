@@ -7,9 +7,9 @@ export const BASE = '/studio/'; // -> '/' when legendalive.is-a.dev is attached
 export const SITE = {
   name: 'LegendAlive Studio',
   shortName: 'LegendAlive',
-  tagline: 'Complete products, not demos.',
+  tagline: 'We build software and keep it running.',
   description:
-    'The one-person software studio of Benson Mtsotso. Shipped products, engineering case studies, technical writing and release notes.',
+    'An independent software studio. Products in production, engineering case studies, technical writing and release notes.',
   domain: 'https://legendalive.is-a.dev',          // canonical, after cutover
   preview: 'https://legendalive.github.io/studio/', // live URL until cutover
   yearStart: 2026,
