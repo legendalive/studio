@@ -43,7 +43,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="work/">Work</a>
         <a href="#capabilities">Capabilities</a>
-        <a href="#developer">The developer</a>
+        <a href="about/">The developer</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
       </nav>
@@ -55,7 +55,7 @@
     <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
       <a href="work/">Work</a>
       <a href="#capabilities">Capabilities</a>
-      <a href="#developer">The developer</a>
+      <a href="about/">The developer</a>
       <a href="#contact">Contact</a>
       <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
       <span class="nav-sheet-note">LegendAlive Studio</span>
@@ -84,6 +84,7 @@
               <ul role="list">
                 <li><a href="work/weaver/">Weaver — novel-writing studio</a></li>
                 <li><a href="work/repobundle/">RepoBundle — codebase bundler</a></li>
+                <li><a href="work/swingmatrix/">SwingMatrix — election scenario engine, in development</a></li>
               </ul>
               <p>Capabilities</p>
               <ul role="list">
@@ -248,8 +249,44 @@
       </div>
     </section>
 
+    <!-- ================= COMING SOON ================= -->
+    <section class="section" id="coming-soon" aria-labelledby="soon-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="soon-title">Coming soon</h2>
+        </div>
+        <p class="lede" style="margin-top:16px">
+          What is being built next. Nothing here is available yet, and nothing
+          here carries a date.
+        </p>
+        <div class="caps" id="pipeline-list" style="margin-top:16px">
+          <div class="cap-row">
+            <h3 class="cap-term">SchemaSketch</h3>
+            <p class="cap-desc">
+              Draw a database schema on a canvas and export SQL DDL with
+              migrations. Queued, not started.
+            </p>
+          </div>
+          <div class="cap-row">
+            <h3 class="cap-term">Statecraft</h3>
+            <p class="cap-desc">
+              A visual state-machine editor that emits dependency-free
+              JavaScript. Queued, not started.
+            </p>
+          </div>
+          <div class="cap-row">
+            <h3 class="cap-term">Regex Dojo</h3>
+            <p class="cap-desc">
+              Escalating regex puzzles with hints and progress kept in the
+              browser. Queued, not started.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= THE DEVELOPER ================= -->
-    <section class="section" id="developer" aria-labelledby="developer-title">
+    <section class="section section--alt" id="developer" aria-labelledby="developer-title">
       <div class="container">
         <div class="section-head">
           <h2 id="developer-title">The developer</h2>
@@ -263,11 +300,13 @@
               editor engine to the deployment pipeline.
             </p>
             <p>
-              He works from Kenya and keeps a simple method: small verified
-              steps, decisions written down with the alternatives they
-              rejected, and a log of what broke.
+              Self-taught, based in Nairobi, and building alongside a career in
+              operations management. The method is small verified steps,
+              decisions written down with the alternatives they rejected, and a
+              log of what broke.
             </p>
             <div class="developer-links">
+              <a href="about/">More about the developer <span class="arrow" aria-hidden="true">→</span></a>
               <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile <span class="arrow" aria-hidden="true">↗</span></a>
               <a href="mailto:mbenson.mb62@gmail.com">mbenson.mb62@gmail.com</a>
             </div>
@@ -277,7 +316,7 @@
     </section>
 
     <!-- ================= CONTACT ================= -->
-    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+    <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head">
           <h2 id="contact-title">Contact</h2>
@@ -311,7 +350,8 @@
           <ul role="list">
             <li><a href="work/">Work</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#developer">The developer</a></li>
+            <li><a href="#coming-soon">Coming soon</a></li>
+            <li><a href="about/">The developer</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -344,8 +384,10 @@
   <script type="module">
     import { url } from './assets/js/config.js';
     import { el, clear } from './assets/js/dom.js';
-    import { loadManifest, getPosts, getReleases, findBySlug, formatDate } from './assets/js/manifest.js';
+    import { loadManifest, getProjects, getPosts, getReleases, findBySlug, formatDate } from './assets/js/manifest.js';
     import { initSystemMap } from './assets/js/systemmap.js';
+
+    const STATUS_TEXT = { building: 'In development.', lab: 'In the lab.', paused: 'Paused.' };
 
     const mount = document.getElementById('system-map');
     if (mount) initSystemMap(mount);
@@ -383,6 +425,17 @@
       ]);
     }
 
+    function pipelineRow(p) {
+      return el('div', { class: 'cap-row' }, [
+        el('h3', { class: 'cap-term' }, [
+          el('a', { href: url(p.page || ('work/' + p.slug + '/')) }, [p.name]),
+        ]),
+        el('p', { class: 'cap-desc' }, [
+          (p.tagline || '') + ' ' + (STATUS_TEXT[p.status] || ''),
+        ]),
+      ]);
+    }
+
     loadManifest().then((data) => {
       const releases = getReleases(data).slice(0, 5);
       const relSection = document.getElementById('updates');
@@ -400,6 +453,15 @@
         clear(list);
         posts.forEach((p) => list.appendChild(postCard(p)));
         postSection.hidden = false;
+      }
+
+      // Anything in the manifest that is not live leads the Coming soon list.
+      const pipeline = getProjects(data).filter((p) => p.status && p.status !== 'live');
+      const pipelineList = document.getElementById('pipeline-list');
+      if (pipelineList && pipeline.length) {
+        pipeline.slice().reverse().forEach((p) => {
+          pipelineList.insertBefore(pipelineRow(p), pipelineList.firstChild);
+        });
       }
     }).catch(() => {
       // The System Map surfaces its own error with a Retry action.
