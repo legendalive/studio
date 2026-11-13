@@ -1,0 +1,52 @@
+// Repo: studio — assets/js/brand.js — FULL file
+// Favicon injection for LegendAlive Studio.
+// The page-facing mark (.studio-mark) is a CSS background-image data-URI in
+// base.css, so it renders even with JavaScript disabled. This module owns
+// only the favicon: the drafting-square "L" on a rounded ink tile, heavier
+// strokes so it survives 16x16. Metallic technique per plan 6.8:
+// cross-stroke gradient, dark rim pass, body pass, bright core pass,
+// radial specular bloom upper-left.
+
+const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs>
+<linearGradient id="lm" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0b3a55"/>
+<stop offset=".32" stop-color="#38bdf8"/>
+<stop offset=".5" stop-color="#eaf6ff"/>
+<stop offset=".68" stop-color="#0ea5e9"/>
+<stop offset="1" stop-color="#0b3a55"/>
+</linearGradient>
+<radialGradient id="ln" cx=".35" cy=".35" r=".9">
+<stop offset="0" stop-color="#f4fbff"/>
+<stop offset=".55" stop-color="#38bdf8"/>
+<stop offset="1" stop-color="#0b3a55"/>
+</radialGradient>
+<radialGradient id="lb" cx=".3" cy=".22" r=".85">
+<stop offset="0" stop-color="#ffffff" stop-opacity=".4"/>
+<stop offset=".55" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#06080b" stroke="#232d3a" stroke-width="3"/>
+<path d="M22 14v34h30" fill="none" stroke="#04121d" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 14v34h30" fill="none" stroke="url(#lm)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 14v34h30" fill="none" stroke="#eaf6ff" stroke-opacity=".8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44 48v-8" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+<circle cx="22" cy="48" r="5.5" fill="url(#ln)" stroke="#04121d" stroke-width="2"/>
+<rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="url(#lb)"/>
+</svg>`;
+
+export function faviconUri() {
+  return 'data:image/svg+xml,' + encodeURIComponent(FAVICON_SVG);
+}
+
+// Idempotent: replaces the href of an existing icon link, or creates one.
+export function initBrand() {
+  let link = document.querySelector('link[rel="icon"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'icon';
+    document.head.appendChild(link);
+  }
+  link.type = 'image/svg+xml';
+  link.href = faviconUri();
+}
