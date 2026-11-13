@@ -1,7 +1,7 @@
-/* Repo: studio — assets/css/base.css — FULL file */
+/* Repo: studio — assets/css/base.css — FULL REPLACEMENT */
 /* LegendAlive Studio — Blueprint & Forge.
-   Revision R2: fluid frame (wide monitors use the space), System Map styles,
-   home writing/updates surfaces. Palette unchanged from R1.
+   Revision R3: mobile nav sheet fix (full-viewport, opaque, scrollable),
+   developer copy update lives in index.html. Palette unchanged.
    Single CSS source (T4): shell.js injects this sheet via BASE; pages carry
    only a <noscript> fallback link. Component rules live in components.css. */
 
@@ -152,12 +152,13 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 .studio-mark--lg { width: 96px; height: 96px; }
 .studio-mark--xl { width: 140px; height: 140px; }
 
-/* ---------- 7. Nav ---------- */
+/* ---------- 7. Nav ----------
+   No backdrop-filter on .site-nav: it creates a containing block that traps
+   the fixed .nav-sheet inside the 64px bar (the mobile overlay bug). The nav
+   is solid; the sheet owns its own full-viewport opaque background. */
 .site-nav {
   position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--nav-h);
-  background: rgba(6, 8, 11, .9);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(6, 8, 11, .94);
   border-bottom: 1px solid transparent;
   transition: border-color var(--t-std), box-shadow var(--t-std);
 }
@@ -412,9 +413,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
   .js .nav-sheet {
     display: none; position: fixed; inset: 0; z-index: -1;
     padding: calc(var(--nav-h) + 32px) 24px 32px;
-    background: rgba(6, 8, 11, .97);
-    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    background: rgba(6, 8, 11, .98);
     flex-direction: column; gap: 6px;
+    overflow-y: auto; overscroll-behavior: contain;
   }
   .js .nav-open .nav-sheet { display: flex; }
   .nav-sheet a {
