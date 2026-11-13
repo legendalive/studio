@@ -1,0 +1,130 @@
+/* Repo: studio — assets/css/prose.css — NEW FILE */
+/* LegendAlive Studio — long-form reading and case-study layout.
+   Loaded on demand by project.js, reader.js and the hand-authored Weaver
+   page through ensureStylesheet(). Scoped under .prose so it never fights
+   base.css or components.css (T4). Palette unchanged. */
+
+/* ---------- Prose measure and rhythm ---------- */
+.prose {
+  max-width: 68ch;
+  color: var(--paper);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.prose > * + * { margin-top: 20px; }
+.prose > :first-child { margin-top: 0; }
+
+.prose h2 { font-size: 26px; font-weight: 600; margin-top: 56px; }
+.prose h3 { font-size: 20px; font-weight: 600; margin-top: 36px; }
+.prose h4 { font-size: 16px; font-weight: 600; margin-top: 28px; }
+
+.prose p { color: var(--paper); }
+.prose strong { font-weight: 600; color: var(--paper); }
+.prose em { color: var(--paper); }
+.prose del { color: var(--faint); }
+
+.prose a {
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+.prose a:hover { text-decoration-color: var(--blueprint); }
+
+/* ---------- Lists ---------- */
+.prose ul, .prose ol { padding-left: 24px; display: grid; gap: 8px; }
+.prose li::marker { color: var(--blueprint); }
+.prose li > ul, .prose li > ol { margin-top: 8px; }
+
+/* ---------- Blockquote ---------- */
+.prose blockquote {
+  border-left: 2px solid var(--line-strong);
+  padding-left: 20px;
+  color: var(--muted);
+}
+.prose blockquote > * + * { margin-top: 12px; }
+.prose blockquote p { color: var(--muted); }
+
+/* ---------- Inline code ---------- */
+.prose :not(pre) > code {
+  font: 500 .875em var(--font-mono);
+  color: var(--paper);
+  background: var(--ink-700);
+  border: 1px solid var(--line);
+  border-radius: var(--r-chip);
+  padding: 2px 6px;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Block spacing for rendered components ---------- */
+.prose .codeblock,
+.prose .table-wrap,
+.prose .figure,
+.prose .callout { margin-top: 24px; }
+.prose .callout-body > * + * { margin-top: 8px; }
+.prose .callout-body p { color: var(--muted); }
+.prose .divider { margin: 40px 0; }
+.prose img { border-radius: var(--r-control); }
+
+/* ---------- Generic project reader layout ---------- */
+.project-body .content-grid { padding-bottom: 48px; }
+.content-grid.no-rail { grid-template-columns: minmax(0, 1fr); }
+.content-grid.no-rail .rail { display: none; }
+
+/* ---------- Case-study expandable subsystems ---------- */
+.subsystems { display: grid; margin-top: 8px; }
+.subsystem { border-top: 1px solid var(--line); }
+.subsystem:last-child { border-bottom: 1px solid var(--line); }
+.subsystem summary {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 60px; padding: 8px 0;
+  cursor: pointer; list-style: none;
+  font: 600 17px var(--font-display); color: var(--paper);
+}
+.subsystem summary::-webkit-details-marker { display: none; }
+.subsystem summary::before {
+  content: "+"; flex: none; width: 20px;
+  font: 500 18px var(--font-mono); color: var(--blueprint);
+}
+.subsystem[open] summary::before { content: "\2212"; }
+.subsystem summary:hover { color: var(--blueprint); }
+.subsystem-body {
+  display: grid; gap: 12px;
+  padding: 0 0 24px 34px;
+  max-width: 68ch;
+}
+.subsystem-body p { color: var(--muted); }
+.subsystem-body p strong { color: var(--paper); }
+
+/* ---------- War stories ---------- */
+.war-story { display: grid; gap: 12px; padding: 28px 0; }
+.war-story + .war-story { border-top: 1px solid var(--line); }
+.war-story h3 { font-size: 18px; }
+.war-line {
+  display: grid; grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px; font-size: 15px; color: var(--muted);
+}
+.war-line b {
+  font: 600 11px var(--font-mono);
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--faint); padding-top: 4px;
+}
+.war-line p { color: var(--muted); }
+
+/* ---------- Case footer navigation ---------- */
+.case-nav {
+  display: flex; flex-wrap: wrap; gap: 12px 32px;
+  justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--line);
+  padding: 28px 0 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .prose h2 { font-size: 23px; margin-top: 44px; }
+  .prose h3 { font-size: 18px; margin-top: 32px; }
+  .subsystem summary { font-size: 16px; min-height: 56px; }
+  .subsystem-body { padding-left: 0; }
+  .war-line { grid-template-columns: 1fr; gap: 4px; }
+  .war-line b { padding-top: 0; }
+  .case-nav { justify-content: flex-start; }
+}
