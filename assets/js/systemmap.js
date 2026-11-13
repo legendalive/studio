@@ -1,9 +1,10 @@
-// Repo: studio — assets/js/systemmap.js — FULL file
+// Repo: studio — assets/js/systemmap.js — FULL REPLACEMENT
 // LegendAlive Studio — the System Map (plan section 7).
 // Reads content/index.json through manifest.js. Nodes are products and
 // capabilities; edges are the real capability dependencies in the manifest.
-// One rAF loop, transforms only, paused when hidden or off-screen.
-// No innerHTML. SVG nodes are built with createElementNS.
+// Product nodes open the internal case study; the card keeps a separate
+// "Open app" action. One rAF loop, transforms only, paused when hidden or
+// off-screen. No innerHTML. SVG nodes are built with createElementNS.
 
 import { url } from './config.js';
 import { el, clear, on } from './dom.js';
@@ -62,19 +63,17 @@ function nodeAriaLabel(node) {
     (STATUS_LABEL[node.ref.status] || node.ref.status);
 }
 
+// Internal case-study route, built from BASE so it survives the domain cutover.
 function projectHref(project) {
-  if (project.links && project.links.app) return project.links.app;
-  return url(project.page || 'work/');
+  return url(project.page || ('work/' + project.slug + '/'));
 }
 
-function isExternal(href) {
-  try { return new URL(href, location.href).origin !== location.origin; }
-  catch (err) { return false; }
+function appHref(project) {
+  return (project.links && project.links.app) || '';
 }
 
 // initSystemMap(mount) renders the map into mount. Safe to call again on the
-// same mount (the previous instance is destroyed first). Returns a handle
-// with destroy(), or undefined while loading / on failure.
+// same mount (the previous instance is destroyed first).
 export async function initSystemMap(mount) {
   if (!mount) return undefined;
   if (typeof mount.__mapDestroy === 'function') mount.__mapDestroy();
@@ -224,8 +223,7 @@ function buildMap(mount, projects, capabilities) {
     }
     if (n.kind === 'project') {
       const p = n.ref;
-      const href = projectHref(p);
-      const external = isExternal(href);
+      const app = appHref(p);
       card.appendChild(el('p', { class: 'map-card-kind' }, [
         kindLabel(n) + ' · ' + (STATUS_LABEL[p.status] || p.status),
       ]));
@@ -235,12 +233,10 @@ function buildMap(mount, projects, capabilities) {
         card.appendChild(el('div', { class: 'map-card-stack' },
           p.stack.map((s) => el('span', { class: 'chip-stack' }, [s]))));
       }
-      card.appendChild(el('a', {
-        class: 'btn btn--ghost btn--sm',
-        href,
-        target: external ? '_blank' : null,
-        rel: external ? 'noopener' : null,
-      }, [external ? 'Open app' : 'View project']));
+      card.appendChild(el('div', { class: 'btn-row' }, [
+        el('a', { class: 'btn btn--primary btn--sm', href: projectHref(p) }, ['View case study']),
+        app ? el('a', { class: 'btn btn--ghost btn--sm', href: app, target: '_blank', rel: 'noopener' }, ['Open app']) : null,
+      ]));
     } else {
       const c = n.ref;
       card.appendChild(el('p', { class: 'map-card-kind' }, ['Capability']));
@@ -291,9 +287,7 @@ function buildMap(mount, projects, capabilities) {
 
   function navigate(n) {
     if (n.kind === 'project') {
-      const href = projectHref(n.ref);
-      if (isExternal(href)) window.open(href, '_blank', 'noopener');
-      else location.href = href;
+      location.href = projectHref(n.ref);
       return;
     }
     const anchor = 'cap-' + (n.ref.anchor || n.ref.id);
@@ -303,7 +297,6 @@ function buildMap(mount, projects, capabilities) {
     row.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + anchor);
     row.classList.remove('is-flash');
-    // Restart the flash even on repeated clicks.
     void row.offsetWidth;
     row.classList.add('is-flash');
     window.setTimeout(() => row.classList.remove('is-flash'), 1400);
@@ -340,7 +333,7 @@ function buildMap(mount, projects, capabilities) {
   /* ---------- Mobile list (same data, same filters) ---------- */
 
   const listEl = el('ul', { class: 'map-list', role: 'list' });
-  const listItems = nodes.map((n) => {
+  nodes.forEach((n) => {
     const meta = n.kind === 'project'
       ? kindLabel(n) + ' · ' + (STATUS_LABEL[n.ref.status] || n.ref.status)
       : 'Capability';
@@ -353,7 +346,6 @@ function buildMap(mount, projects, capabilities) {
     const li = el('li', {}, [btn]);
     n.li = li;
     listEl.appendChild(li);
-    return li;
   });
 
   /* ---------- Controls ---------- */
