@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "updated": "2026-11-13",
+  "projects": [
+    {
+      "slug": "weaver",
+      "name": "Weaver",
+      "tagline": "A privacy-first novel-writing studio that runs entirely in the browser.",
+      "status": "live",
+      "category": "product",
+      "year": 2026,
+      "featured": true,
+      "order": 1,
+      "cover": "",
+      "stack": ["ES Modules", "Supabase", "Deno", "Postgres", "Cloudflare Pages"],
+      "capabilities": ["editor", "sync", "ai", "serverless", "payments", "ops", "design"],
+      "links": {
+        "app": "https://legendalive.github.io/Weaver/",
+        "site": "https://weaver-studio.pages.dev/",
+        "pricing": "https://weaver-studio.pages.dev/pricing",
+        "source": ""
+      },
+      "page": "work/weaver/",
+      "metrics": [
+        { "value": "16,414", "label": "lines of source" },
+        { "value": "0", "label": "runtime dependencies" },
+        { "value": "8", "label": "edge functions" }
+      ]
+    },
+    {
+      "slug": "repobundle",
+      "name": "RepoBundle",
+      "tagline": "A zipped repository becomes one verbatim, AI-ready context file without leaving the browser.",
+      "status": "live",
+      "category": "tool",
+      "year": 2026,
+      "featured": true,
+      "order": 2,
+      "cover": "",
+      "stack": ["React", "TypeScript", "Vite", "Tailwind CSS", "JSZip"],
+      "capabilities": ["tooling", "ops", "design"],
+      "links": {
+        "app": "https://legendalive.github.io/RepoBundle/",
+        "site": "",
+        "pricing": "",
+        "source": "https://github.com/legendalive/RepoBundle"
+      },
+      "page": "work/repobundle/",
+      "body": "projects/repobundle.md",
+      "metrics": [
+        { "value": "3,927", "label": "lines of source" },
+        { "value": "24", "label": "source files" },
+        { "value": "0", "label": "servers required" }
+      ],
+      "metricsNote": "Measured by RepoBundle on its own public repository."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "no-framework-no-build",
+      "title": "Shipping a 16,000-line editor with no framework and no build step",
+      "dek": "What you gain, what you pay for, and the four rules that keep it maintainable.",
+      "date": "2026-11-20",
+      "updated": "",
+      "kind": "engineering",
+      "tags": ["architecture", "javascript", "weaver"],
+      "minutes": 9,
+      "draft": true,
+      "cover": ""
+    },
+    {
+      "slug": "virtualizing-contenteditable",
+      "title": "Virtualizing a contenteditable: spacer arithmetic and the 1% bounce",
+      "dek": "Scroll-height deltas, spacer divs, and why pruning blocks must never move the reader.",
+      "date": "2026-11-27",
+      "updated": "",
+      "kind": "engineering",
+      "tags": ["performance", "javascript", "weaver"],
+      "minutes": 8,
+      "draft": true,
+      "cover": ""
+    },
+    {
+      "slug": "return-to-place",
+      "title": "Return to place: how a rewrite finds the exact hole it came from",
+      "dek": "A 120-character seam, whitespace-tolerant matching, and an honest fallback when the seam is gone.",
+      "date": "2026-12-04",
+      "updated": "",
+      "kind": "engineering",
+      "tags": ["algorithms", "ux", "weaver"],
+      "minutes": 7,
+      "draft": true,
+      "cover": ""
+    },
+    {
+      "slug": "provider-agnostic-ai",
+      "title": "Provider-agnostic AI without hardcoding a single model",
+      "dek": "Four providers, one interface, zero pinned model ids. Runtime discovery as a defence against scheduled outages.",
+      "date": "2026-12-11",
+      "updated": "",
+      "kind": "decision",
+      "tags": ["ai", "architecture", "weaver"],
+      "minutes": 8,
+      "draft": true,
+      "cover": ""
+    },
+    {
+      "slug": "gzip-envelope",
+      "title": "A gzip envelope that made a free tier feel like five gigabytes",
+      "dek": "CompressionStream, magic-byte sniffing, and why old blobs must stay readable without a user-triggered migration.",
+      "date": "2026-12-18",
+      "updated": "",
+      "kind": "decision",
+      "tags": ["sync", "compression", "weaver"],
+      "minutes": 7,
+      "draft": true,
+      "cover": ""
+    },
+    {
+      "slug": "nine-war-stories",
+      "title": "Nine bugs that taught me more than the features did",
+      "dek": "Nine failures from the Weaver build, each with the symptom, the cause, and the fix that stayed.",
+      "date": "2026-12-25",
+      "updated": "",
+      "kind": "note",
+      "tags": ["debugging", "lessons", "weaver"],
+      "minutes": 10,
+      "draft": true,
+      "cover": ""
+    }
+  ],
+  "releases": [
+    {
+      "product": "weaver",
+      "version": "4.6",
+      "date": "2026-11-13",
+      "title": "Metallic brand mark, bounded Recheck selection, self-maintaining footer",
+      "tags": ["ui", "performance", "brand"],
+      "breaking": false,
+      "summary": "The brand mark is now a path-drawn SVG shaded as metal. Recheck selection is hard-capped at 1,200 mounted blocks, and the footer year updates itself.",
+      "body": ""
+    }
+  ],
+  "capabilities": [
+    { "id": "editor", "name": "Editor engineering", "anchor": "editor", "summary": "Book-length editing engines: block indexing, virtualization, and selection that survives re-renders." },
+    { "id": "sync", "name": "Offline-first sync", "anchor": "sync", "summary": "Local-first storage, compressed cloud vaults, two-way merge, and failover that reports honestly." },
+    { "id": "ai", "name": "AI integration", "anchor": "ai", "summary": "Provider adapters, runtime model discovery, streaming, and prompt compilation under a budget." },
+    { "id": "serverless", "name": "Serverless backend", "anchor": "serverless", "summary": "Deno edge functions, row-level security, private storage, and keys that never leave the platform." },
+    { "id": "payments", "name": "Commercial plumbing", "anchor": "payments", "summary": "Merchant-of-record checkout, entitlements, and fulfilment tooling built around the actual sale." },
+    { "id": "ops", "name": "CI & operations", "anchor": "ops", "summary": "Push-to-deploy pipelines, scheduled backups, secret handling, and diagnostics that spend nobody's quota." },
+    { "id": "design", "name": "Product & interface", "anchor": "design", "summary": "Design systems, path-drawn brand marks, and mobile layouts where every feature stays reachable." },
+    { "id": "tooling", "name": "Developer tooling", "anchor": "tooling", "summary": "Developer utilities that run client-side: verbatim bundling, tree generation, and AI context preparation." }
+  ]
+}
