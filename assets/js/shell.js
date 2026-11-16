@@ -1,11 +1,9 @@
-// Repo: studio — assets/js/shell.js — FULL file
-// LegendAlive Studio — site shell (Phase 1 rewrite).
-// Loads the shared stylesheets from BASE (single CSS source, T4), sets the
-// favicon, and wires: nav scroll state, current-section marking (scrollspy),
-// route marking for future pages, the mobile sheet with focus trap, the live
-// footer year, and the optional reveal system.
-// Pages built later (article stubs) call refreshShell() after constructing
-// their nav/footer. Every binder is idempotent: no duplicated listeners.
+// LegendAlive Studio — site shell.
+// Loads the shared stylesheets from BASE (single CSS source), sets the
+// favicon, and wires nav scroll state, current-section marking, the mobile
+// sheet with focus trap, the live footer year and the optional reveal system.
+// Pages that build their chrome through chrome.js declare data-current on the
+// header; markRoute defers to that declaration.
 
 import { SITE, url } from './config.js';
 import { initBrand } from './brand.js';
@@ -14,24 +12,32 @@ import { el, qsa, on } from './dom.js';
 const doc = document;
 const root = doc.documentElement;
 
-/* Stylesheets. Pages carry only a <noscript> fallback link, so these are
-   the single active source. Feature modules may request extra sheets
-   (reader.js will add prose.css) through the exported helper. */
 export function ensureStylesheet(id, path) {
   if (doc.getElementById(id)) return;
   doc.head.appendChild(el('link', { id, rel: 'stylesheet', href: url(path) }));
 }
 
-/* ---------- Scroll state + scrollspy ---------- */
+function normalizePath(p) {
+  return p.replace(/index\.html$/i, '').replace(/\/?$/, '/');
+}
+
+/* ---------- Scroll state + current-section spy ---------- */
 
 let spyTargets = [];
 let scrollBound = false;
 let ticking = false;
 
+// Accepts both "#section" and BASE-built "/studio/#section" hrefs, so chrome.js
+// can generate every link from url() without losing scrollspy.
 function buildSpy() {
   const map = new Map();
-  qsa('.nav-links a[href^="#"], .nav-sheet a[href^="#"]').forEach((a) => {
-    const id = a.getAttribute('href').slice(1);
+  const here = normalizePath(location.pathname);
+  qsa('.nav-links a[href], .nav-sheet a[href]').forEach((a) => {
+    let u;
+    try { u = new URL(a.href, location.href); } catch (err) { return; }
+    if (u.origin !== location.origin || !u.hash) return;
+    if (normalizePath(u.pathname) !== here) return;
+    const id = u.hash.slice(1);
     if (!id) return;
     const section = doc.getElementById(id);
     if (!section) return;
@@ -46,7 +52,6 @@ function updateScrollState() {
   if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 12);
   if (!spyTargets.length) return;
 
-  // The section whose top has passed the reading line owns the nav mark.
   const line = window.innerHeight * 0.35;
   let currentId = '';
   for (const t of spyTargets) {
@@ -76,13 +81,11 @@ function bindScroll() {
   on(window, 'hashchange', request);
 }
 
-/* ---------- Route marking (activates when interior pages exist) ---------- */
-
-function normalizePath(p) {
-  return p.replace(/index\.html$/i, '').replace(/\/?$/, '/');
-}
+/* ---------- Route marking (only when chrome has not declared it) ---------- */
 
 function markRoute() {
+  const nav = doc.querySelector('[data-nav]');
+  if (nav && nav.hasAttribute('data-current')) return;
   const here = normalizePath(location.pathname);
   qsa('.nav-links a[href], .nav-sheet a[href]').forEach((a) => {
     const href = a.getAttribute('href') || '';
@@ -153,7 +156,7 @@ function initYear() {
   qsa('[data-year]').forEach((node) => { node.textContent = label; });
 }
 
-/* ---------- Reveals (opt-in via data-reveal; unused by the landing) ---------- */
+/* ---------- Reveals (opt-in via data-reveal) ---------- */
 
 let revealIO = null;
 
