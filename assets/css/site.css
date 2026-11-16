@@ -1,0 +1,62 @@
+/* LegendAlive Studio — the entire stylesheet.
+   Tokens, shell, components, long-form prose, home sections, system map.
+   Linked directly by every page at its own depth. No JS injection. */
+
+/* ---------- Tokens ---------- */
+:root{
+  --ink-900:#06080b; --ink-800:#0b0f14; --ink-700:#121821; --ink-600:#1a222d; --ink-500:#232d3a;
+  --scrim:rgba(4,6,9,.72); --line:#2b3745; --line-strong:#3b4a5c;
+  --paper:#e8eef5; --muted:#93a3b5; --faint:#64748b;
+  --blueprint:#38bdf8; --blueprint-deep:#0ea5e9; --forge:#f5a524; --forge-deep:#d98207; --lab:#a78bfa;
+  --shipped:#34d399; --caution:#fbbf24; --coral:#fb7185; --info:#60a5fa;
+  --blueprint-soft:rgba(56,189,248,.12); --forge-soft:rgba(245,165,36,.12);
+  --font-display:'Space Grotesk',ui-sans-serif,system-ui,'Segoe UI',Roboto,Arial,sans-serif;
+  --font-body:'Inter',ui-sans-serif,system-ui,'Segoe UI',Roboto,Arial,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --r-chip:6px; --r-control:10px; --r-card:14px; --r-panel:20px;
+  --sh-1:0 2px 10px rgba(2,6,12,.45); --sh-2:0 10px 34px rgba(2,6,12,.55); --sh-3:0 24px 70px rgba(2,6,12,.65);
+  --t-micro:120ms; --t-std:220ms; --ease:cubic-bezier(.2,.8,.3,1);
+  --nav-h:64px;
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ink-900);color:var(--paper);font:400 16px/1.7 var(--font-body);overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:var(--blueprint);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+ul[role="list"],ol[role="list"]{list-style:none;padding:0}
+body.no-scroll{overflow:hidden}
+
+/* ---------- Type ---------- */
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;letter-spacing:-.01em;text-wrap:balance;color:var(--paper)}
+h1{font-size:clamp(40px,6vw,62px);max-width:18ch}
+h2{font-size:clamp(26px,3.4vw,34px);font-weight:600}
+p{max-width:68ch}
+.lede{font-size:18px;color:var(--muted);max-width:56ch}
+
+/* ---------- Focus, selection, scrollbars ---------- */
+::selection{background:var(--blueprint);color:#04121d}
+:focus-visible{outline:2px solid var(--blueprint);outline-offset:2px;border-radius:4px}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--ink-800)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--line-strong),var(--ink-600));border:2px solid var(--ink-800);border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(var(--blueprint),var(--blueprint-deep))}
+html{scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
+
+/* ---------- Layout utilities ---------- */
+.container{max-width:1680px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)}
+.narrow{max-width:640px;margin-inline:auto}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:200;padding:12px 18px;background:var(--blueprint);color:#04121d;font-weight:600;border-radius:var(--r-control);transition:top var(--t-std)}
+.skip-link:focus-visible{top:12px;text-decoration:none}
+[id]{scroll-margin-top:calc(var(--nav-h) + 24px)}
+.section{padding:80px 0}
+.section--tight{padding:48px 0}
+.section--alt{background:var(--ink-800);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.text-link{font:500 15px var(--font-body);color:var(--blueprint);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px;transition:text-decoration-color var
