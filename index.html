@@ -1,4 +1,3 @@
-<!-- Repo: studio — index.html — FULL REPLACEMENT -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,51 +15,50 @@
   <meta property="og:description" content="An independent software studio. Products in production, engineering case studies, technical writing and release notes.">
   <meta property="og:url" content="https://legendalive.github.io/studio/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="LegendAlive Studio — We build software and keep it running.">
-  <meta name="twitter:description" content="An independent software studio. Products in production, engineering case studies, technical writing and release notes.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Critical canvas colour before the shell injects base.css. -->
+  <!-- Critical canvas colour before the shell injects the shared sheets. -->
   <style>html{background:#06080b;color-scheme:dark}</style>
-  <noscript><link rel="stylesheet" href="assets/css/base.css"></noscript>
+
+  <!-- Home-only sections and the System Map. Root depth, so this relative
+       path stays correct before and after the domain cutover. -->
+  <link rel="stylesheet" href="assets/css/home.css">
+  <noscript>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+  </noscript>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- The only depth-sensitive path on this page (root depth). -->
   <script type="module" src="assets/js/shell.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-nav" data-nav>
-    <div class="container nav-bar">
-      <a class="nav-brand" href="#top" aria-label="LegendAlive Studio — home">
-        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-        <span>LegendAlive Studio</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="work/">Work</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="about/">The developer</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <button class="nav-toggle" type="button" data-nav-toggle
-              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
-      <a href="work/">Work</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="about/">The developer</a>
-      <a href="#contact">Contact</a>
-      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio</span>
-    </nav>
-  </header>
+  <div data-chrome-nav>
+    <noscript>
+      <header class="site-nav">
+        <div class="container nav-bar">
+          <a class="nav-brand" href="./" aria-label="LegendAlive Studio, home">
+            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+            <span>LegendAlive Studio</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="work/">Work</a>
+            <a href="writing/">Writing</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="about/">The developer</a>
+            <a href="#contact">Contact</a>
+            <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+          </nav>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="main">
     <!-- ================= OPENING ================= -->
@@ -336,58 +334,49 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <span class="footer-brand-name">LegendAlive Studio</span>
-          <p class="footer-tagline">We build software and keep it running.</p>
+  <div data-chrome-footer>
+    <noscript>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-bottom">
+            <span>© 2026 Benson Mtsotso</span>
+            <span>
+              <a href="work/">Work</a> · <a href="writing/">Writing</a> ·
+              <a href="about/">The developer</a> ·
+              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
+            </span>
+          </div>
         </div>
-        <nav class="footer-col" aria-label="Studio">
-          <h3>Studio</h3>
-          <ul role="list">
-            <li><a href="work/">Work</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#coming-soon">Coming soon</a></li>
-            <li><a href="about/">The developer</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Products">
-          <h3>Products</h3>
-          <ul role="list">
-            <li><a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver app</a></li>
-            <li><a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Weaver product site</a></li>
-            <li><a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver pricing</a></li>
-            <li><a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle app</a></li>
-            <li><a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">RepoBundle source</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Elsewhere">
-          <h3>Elsewhere</h3>
-          <ul role="list">
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
-            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
-            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Benson Mtsotso</span>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </noscript>
+  </div>
 
-  <!-- Home bootstrap: the System Map plus the manifest-driven home surfaces. -->
   <script type="module">
-    import { url } from './assets/js/config.js';
+    import { SITE, OWNER, url } from './assets/js/config.js';
     import { el, clear } from './assets/js/dom.js';
+    import { refreshShell } from './assets/js/shell.js';
+    import { renderChrome, buildFooter, applyMeta, absoluteUrl, LABELS } from './assets/js/chrome.js';
     import { loadManifest, getProjects, getPosts, getReleases, findBySlug, formatDate } from './assets/js/manifest.js';
     import { initSystemMap } from './assets/js/systemmap.js';
 
-    const STATUS_TEXT = { building: 'In development.', lab: 'In the lab.', paused: 'Paused.' };
+    // Chrome first, so the nav exists even if the manifest is unreachable.
+    renderChrome({ current: '' });
+
+    applyMeta({
+      title: 'LegendAlive Studio — We build software and keep it running.',
+      description: 'An independent software studio. Products in production, engineering case studies, technical writing and release notes.',
+      path: '',
+      type: 'website',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: SITE.name,
+        url: absoluteUrl(''),
+        description: SITE.description,
+        founder: { '@type': 'Person', name: OWNER.name, url: absoluteUrl('about/') },
+        sameAs: [OWNER.githubUrl],
+      },
+    });
 
     const mount = document.getElementById('system-map');
     if (mount) initSystemMap(mount);
@@ -416,12 +405,12 @@
         el('div', { class: 'post-meta' }, [
           el('span', { class: 'chip-kind' }, [p.kind]),
           el('span', {}, [formatDate(p.date)]),
-          el('span', {}, [p.minutes + ' min read']),
+          el('span', {}, [(p.minutes || 1) + ' min read']),
         ]),
         el('h3', { class: 'post-title' }, [
           el('a', { href: url('p/' + p.slug + '/') }, [p.title]),
         ]),
-        el('p', { class: 'post-dek' }, [p.dek]),
+        el('p', { class: 'post-dek' }, [p.dek || '']),
       ]);
     }
 
@@ -431,12 +420,19 @@
           el('a', { href: url(p.page || ('work/' + p.slug + '/')) }, [p.name]),
         ]),
         el('p', { class: 'cap-desc' }, [
-          (p.tagline || '') + ' ' + (STATUS_TEXT[p.status] || ''),
+          (p.tagline || '') + ' ' + (LABELS.statusSentence[p.status] || ''),
         ]),
       ]);
     }
 
     loadManifest().then((data) => {
+      // Upgrade the footer's product column now that the manifest is known.
+      const foot = document.querySelector('.site-footer');
+      if (foot) {
+        foot.replaceWith(buildFooter(data.projects));
+        refreshShell();
+      }
+
       const releases = getReleases(data).slice(0, 5);
       const relSection = document.getElementById('updates');
       if (releases.length && relSection) {
@@ -455,7 +451,6 @@
         postSection.hidden = false;
       }
 
-      // Anything in the manifest that is not live leads the Coming soon list.
       const pipeline = getProjects(data).filter((p) => p.status && p.status !== 'live');
       const pipelineList = document.getElementById('pipeline-list');
       if (pipelineList && pipeline.length) {
