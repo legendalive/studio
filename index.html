@@ -8,51 +8,30 @@
   <meta name="author" content="Benson Mtsotso">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#06080b">
-  <link rel="canonical" href="https://legendalive.github.io/studio/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LegendAlive Studio">
   <meta property="og:title" content="LegendAlive Studio — We build software and keep it running.">
   <meta property="og:description" content="An independent software studio. Products in production, engineering case studies, technical writing and release notes.">
-  <meta property="og:url" content="https://legendalive.github.io/studio/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-  <!-- Critical canvas colour before the shell injects the shared sheets. -->
   <style>html{background:#06080b;color-scheme:dark}</style>
-
-  <!-- Home-only sections and the System Map. Root depth, so this relative
-       path stays correct before and after the domain cutover. -->
-  <link rel="stylesheet" href="assets/css/home.css">
-  <noscript>
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-    <link rel="stylesheet" href="assets/css/home.css">
-  </noscript>
-
+  <link rel="stylesheet" href="assets/css/site.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <script type="module" src="assets/js/shell.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
 </head>
-<body>
+<body data-nav="">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div data-chrome-nav>
     <noscript>
       <header class="site-nav">
         <div class="container nav-bar">
-          <a class="nav-brand" href="./" aria-label="LegendAlive Studio, home">
-            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-            <span>LegendAlive Studio</span>
-          </a>
+          <a class="nav-brand" href="./"><span class="studio-mark studio-mark--sm" aria-hidden="true"></span><span>LegendAlive Studio</span></a>
           <nav class="nav-links" aria-label="Primary">
-            <a href="work/">Work</a>
-            <a href="writing/">Writing</a>
-            <a href="#capabilities">Capabilities</a>
-            <a href="about/">The developer</a>
-            <a href="#contact">Contact</a>
+            <a href="work/">Work</a><a href="writing/">Writing</a><a href="#capabilities">Capabilities</a>
+            <a href="about/">The developer</a><a href="#contact">Contact</a>
             <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
           </nav>
         </div>
@@ -61,7 +40,6 @@
   </div>
 
   <main id="main">
-    <!-- ================= OPENING ================= -->
     <section class="opening" id="top" aria-labelledby="opening-title">
       <div class="container opening-grid">
         <div class="opening-copy">
@@ -73,7 +51,6 @@
           </p>
           <a class="text-link" href="#work">See the work</a>
         </div>
-
         <div class="map-mount" id="system-map">
           <p class="map-loading">Loading the system map…</p>
           <noscript>
@@ -85,21 +62,16 @@
                 <li><a href="work/swingmatrix/">SwingMatrix — election scenario engine, in development</a></li>
               </ul>
               <p>Capabilities</p>
-              <ul role="list">
-                <li><a href="#capabilities">Editor engineering, offline-first sync, AI integration, serverless backend, commercial plumbing, CI and operations, product and interface, developer tooling</a></li>
-              </ul>
+              <ul role="list"><li><a href="#capabilities">Editor engineering, offline-first sync, AI integration, serverless backend, commercial plumbing, CI and operations, product and interface, developer tooling</a></li></ul>
             </div>
           </noscript>
         </div>
       </div>
     </section>
 
-    <!-- ================= WORK ================= -->
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="work-title">Work</h2>
-        </div>
+        <div class="section-head"><h2 id="work-title">Work</h2></div>
 
         <article class="work-entry" aria-labelledby="weaver-name">
           <div class="work-id">
@@ -114,18 +86,8 @@
             </div>
           </div>
           <div class="work-body">
-            <p>
-              A novel-writing studio that runs entirely in the browser. The
-              author works on a raw manuscript alongside the finished book,
-              and an AI panel proposes changes that enter the book only when
-              the author accepts them. Work is stored locally first and
-              synced to a private, compressed cloud vault.
-            </p>
-            <p>
-              The editor is built from scratch: a virtualised block engine
-              that indexes a 1.8 MB manuscript in about 2.8 ms and keeps a
-              whole novel scrollable on a phone.
-            </p>
+            <p>A novel-writing studio that runs entirely in the browser. The author works on a raw manuscript alongside the finished book, and an AI panel proposes changes that enter the book only when the author accepts them. Work is stored locally first and synced to a private, compressed cloud vault.</p>
+            <p>The editor is built from scratch: a virtualised block engine that indexes a 1.8 MB manuscript in about 2.8 ms and keeps a whole novel scrollable on a phone.</p>
           </div>
         </article>
 
@@ -141,168 +103,79 @@
             </div>
           </div>
           <div class="work-body">
-            <p>
-              A developer tool that turns a zipped repository into a single
-              file ready for an AI model's context window. The source is
-              preserved verbatim, with a generated file tree and per-language
-              bundles alongside it.
-            </p>
-            <p>
-              Everything runs in the browser. The repository never leaves
-              the machine, and large archives are processed in chunks so the
-              tab stays responsive.
-            </p>
+            <p>A developer tool that turns a zipped repository into a single file ready for an AI model's context window. The source is preserved verbatim, with a generated file tree and per-language bundles alongside it.</p>
+            <p>Everything runs in the browser. The repository never leaves the machine, and large archives are processed in chunks so the tab stays responsive.</p>
           </div>
         </article>
 
-        <p style="margin-top:8px"><a class="text-link" href="work/">All work</a></p>
+        <article class="work-entry" aria-labelledby="swingmatrix-name">
+          <div class="work-id">
+            <h3 class="work-name" id="swingmatrix-name">SwingMatrix</h3>
+            <p class="work-meta">2026 · scenario engine · in development</p>
+            <p class="work-stack">Stack open · engine runs client-side</p>
+            <div class="work-links">
+              <a href="work/swingmatrix/">Project brief <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="work-body">
+            <p>A game-theory and statistical scenario engine for Kenyan elections. Coalition arithmetic and turnout assumptions become the interface, so every projection carries the inputs that produced it.</p>
+            <p>In development. No projections are published yet.</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- ================= CAPABILITIES ================= -->
     <section class="section section--alt" id="capabilities" aria-labelledby="cap-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="cap-title">Capabilities</h2>
-        </div>
+        <div class="section-head"><h2 id="cap-title">Capabilities</h2></div>
         <div class="caps">
-          <div class="cap-row" id="cap-editor">
-            <h3 class="cap-term">Editor engineering</h3>
-            <p class="cap-desc">
-              The engine inside <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>:
-              a virtualised, block-indexed contenteditable built for book-length manuscripts.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-sync">
-            <h3 class="cap-term">Offline-first sync</h3>
-            <p class="cap-desc">
-              Local-first storage with a gzip-compressed private vault and failover that
-              reports honestly, running in <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-ai">
-            <h3 class="cap-term">AI integration</h3>
-            <p class="cap-desc">
-              Four providers behind one interface in <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver</a>,
-              with every model discovered at runtime rather than pinned.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-serverless">
-            <h3 class="cap-term">Serverless backend</h3>
-            <p class="cap-desc">
-              Eight Supabase edge functions on Deno carry
-              <a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver's</a>
-              server side. Service keys never leave the platform.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-payments">
-            <h3 class="cap-term">Commercial plumbing</h3>
-            <p class="cap-desc">
-              Gumroad as merchant of record, three tiers, and an admin console that handles
-              fulfilment for <a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver</a>.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-ops">
-            <h3 class="cap-term">CI &amp; operations</h3>
-            <p class="cap-desc">
-              Push-to-deploy through GitHub Actions on every repository,
-              <a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">this one</a> included.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-design">
-            <h3 class="cap-term">Product &amp; interface</h3>
-            <p class="cap-desc">
-              Design systems, mobile layouts that keep every feature reachable, and brand
-              marks drawn as SVG paths rather than fonts.
-            </p>
-          </div>
-          <div class="cap-row" id="cap-tooling">
-            <h3 class="cap-term">Developer tooling</h3>
-            <p class="cap-desc">
-              <a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle</a>
-              packages whole repositories for AI context without a server.
-            </p>
-          </div>
+          <div class="cap-row" id="cap-editor"><h3 class="cap-term">Editor engineering</h3><p class="cap-desc">The engine inside <a href="work/weaver/">Weaver</a>: a virtualised, block-indexed contenteditable built for book-length manuscripts.</p></div>
+          <div class="cap-row" id="cap-sync"><h3 class="cap-term">Offline-first sync</h3><p class="cap-desc">Local-first storage with a gzip-compressed private vault and failover that reports honestly, running in <a href="work/weaver/">Weaver</a>.</p></div>
+          <div class="cap-row" id="cap-ai"><h3 class="cap-term">AI integration</h3><p class="cap-desc">Four providers behind one interface in <a href="work/weaver/">Weaver</a>, with every model discovered at runtime rather than pinned.</p></div>
+          <div class="cap-row" id="cap-serverless"><h3 class="cap-term">Serverless backend</h3><p class="cap-desc">Eight Supabase edge functions on Deno carry <a href="work/weaver/">Weaver's</a> server side. Service keys never leave the platform.</p></div>
+          <div class="cap-row" id="cap-payments"><h3 class="cap-term">Commercial plumbing</h3><p class="cap-desc">Gumroad as merchant of record, three tiers, and an admin console that handles fulfilment for <a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver</a>.</p></div>
+          <div class="cap-row" id="cap-ops"><h3 class="cap-term">CI &amp; operations</h3><p class="cap-desc">Push-to-deploy through GitHub Actions on every repository, <a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">this one</a> included.</p></div>
+          <div class="cap-row" id="cap-design"><h3 class="cap-term">Product &amp; interface</h3><p class="cap-desc">Design systems, mobile layouts that keep every feature reachable, and brand marks drawn as SVG paths rather than fonts.</p></div>
+          <div class="cap-row" id="cap-tooling"><h3 class="cap-term">Developer tooling</h3><p class="cap-desc"><a href="work/repobundle/">RepoBundle</a> packages whole repositories for AI context without a server.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= WRITING (appears when the first article publishes) ================= -->
     <section class="section" id="writing" hidden aria-labelledby="writing-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="writing-title">Writing</h2>
-        </div>
+        <div class="section-head"><h2 id="writing-title">Writing</h2></div>
         <div class="list-flow" data-home-posts></div>
+        <p style="margin-top:16px"><a class="text-link" href="writing/">All writing</a></p>
       </div>
     </section>
 
-    <!-- ================= RECENT UPDATES ================= -->
     <section class="section" id="updates" hidden aria-labelledby="updates-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="updates-title">Recent updates</h2>
-        </div>
+        <div class="section-head"><h2 id="updates-title">Recent updates</h2></div>
         <div class="list-flow" data-home-releases></div>
       </div>
     </section>
 
-    <!-- ================= COMING SOON ================= -->
     <section class="section" id="coming-soon" aria-labelledby="soon-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="soon-title">Coming soon</h2>
-        </div>
-        <p class="lede" style="margin-top:16px">
-          What is being built next. Nothing here is available yet, and nothing
-          here carries a date.
-        </p>
-        <div class="caps" id="pipeline-list" style="margin-top:16px">
-          <div class="cap-row">
-            <h3 class="cap-term">SchemaSketch</h3>
-            <p class="cap-desc">
-              Draw a database schema on a canvas and export SQL DDL with
-              migrations. Queued, not started.
-            </p>
-          </div>
-          <div class="cap-row">
-            <h3 class="cap-term">Statecraft</h3>
-            <p class="cap-desc">
-              A visual state-machine editor that emits dependency-free
-              JavaScript. Queued, not started.
-            </p>
-          </div>
-          <div class="cap-row">
-            <h3 class="cap-term">Regex Dojo</h3>
-            <p class="cap-desc">
-              Escalating regex puzzles with hints and progress kept in the
-              browser. Queued, not started.
-            </p>
-          </div>
+        <div class="section-head"><h2 id="soon-title">Coming soon</h2></div>
+        <p class="lede" style="margin-top:16px">What is being built next. Nothing here is available yet, and nothing here carries a date.</p>
+        <div class="caps" style="margin-top:16px">
+          <div class="cap-row"><h3 class="cap-term">SchemaSketch</h3><p class="cap-desc">Draw a database schema on a canvas and export SQL DDL with migrations. Queued, not started.</p></div>
+          <div class="cap-row"><h3 class="cap-term">Statecraft</h3><p class="cap-desc">A visual state-machine editor that emits dependency-free JavaScript. Queued, not started.</p></div>
+          <div class="cap-row"><h3 class="cap-term">Regex Dojo</h3><p class="cap-desc">Escalating regex puzzles with hints and progress kept in the browser. Queued, not started.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= THE DEVELOPER ================= -->
     <section class="section section--alt" id="developer" aria-labelledby="developer-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="developer-title">The developer</h2>
-        </div>
+        <div class="section-head"><h2 id="developer-title">The developer</h2></div>
         <div class="developer-grid">
           <span class="studio-mark studio-mark--lg" aria-hidden="true"></span>
           <div class="developer-body">
-            <p>
-              <strong>Benson Mtsotso</strong> is the dev behind LegendAlive Studio.
-              He designs, builds and operates everything the studio ships, from the
-              editor engine to the deployment pipeline.
-            </p>
-            <p>
-              Self-taught, based in Nairobi, and building alongside a career in
-              operations management. The method is small verified steps,
-              decisions written down with the alternatives they rejected, and a
-              log of what broke.
-            </p>
+            <p><strong>Benson Mtsotso</strong> is the dev behind LegendAlive Studio. He designs, builds and operates everything the studio ships, from the editor engine to the deployment pipeline.</p>
+            <p>Self-taught, based in Nairobi, and building alongside a career in operations management. The method is small verified steps, decisions written down with the alternatives they rejected, and a log of what broke.</p>
             <div class="developer-links">
               <a href="about/">More about the developer <span class="arrow" aria-hidden="true">→</span></a>
               <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile <span class="arrow" aria-hidden="true">↗</span></a>
@@ -313,22 +186,13 @@
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="section-head">
-          <h2 id="contact-title">Contact</h2>
-        </div>
+        <div class="section-head"><h2 id="contact-title">Contact</h2></div>
         <div class="contact-grid">
-          <p>
-            Email is the best way to reach the studio. Product questions,
-            engineering work, writing: it all arrives at the same desk.
-          </p>
+          <p>Email is the best way to reach the studio. Product questions, engineering work, writing: it all arrives at the same desk.</p>
           <a class="contact-mail" href="mailto:mbenson.mb62@gmail.com">mbenson.mb62@gmail.com</a>
-          <p class="contact-note">
-            Weaver product support goes through the in-app Support window,
-            which carries your account context with it.
-          </p>
+          <p class="contact-note">Weaver product support goes through the in-app Support window, which carries your account context with it.</p>
         </div>
       </div>
     </section>
@@ -336,109 +200,51 @@
 
   <div data-chrome-footer>
     <noscript>
-      <footer class="site-footer">
-        <div class="container">
-          <div class="footer-bottom">
-            <span>© 2026 Benson Mtsotso</span>
-            <span>
-              <a href="work/">Work</a> · <a href="writing/">Writing</a> ·
-              <a href="about/">The developer</a> ·
-              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
-            </span>
-          </div>
-        </div>
-      </footer>
+      <footer class="site-footer"><div class="container"><div class="footer-bottom">
+        <span>© 2026 Benson Mtsotso</span>
+        <span><a href="work/">Work</a> · <a href="writing/">Writing</a> · <a href="about/">The developer</a> · <a href="mailto:mbenson.mb62@gmail.com">Email</a></span>
+      </div></div></footer>
     </noscript>
   </div>
 
   <script type="module">
-    import { SITE, OWNER, url } from './assets/js/config.js';
-    import { el, clear } from './assets/js/dom.js';
-    import { refreshShell } from './assets/js/shell.js';
-    import { renderChrome, buildFooter, applyMeta, absoluteUrl, LABELS } from './assets/js/chrome.js';
-    import { loadManifest, getProjects, getPosts, getReleases, findBySlug, formatDate } from './assets/js/manifest.js';
-    import { initSystemMap } from './assets/js/systemmap.js';
-
-    // Chrome first, so the nav exists even if the manifest is unreachable.
-    renderChrome({ current: '' });
+    import { SITE, OWNER, url, absoluteUrl, el, clear, applyMeta, loadManifest, getPosts, getReleases, findBySlug, formatDate } from './assets/js/app.js';
 
     applyMeta({
       title: 'LegendAlive Studio — We build software and keep it running.',
-      description: 'An independent software studio. Products in production, engineering case studies, technical writing and release notes.',
+      description: SITE.description,
       path: '',
-      type: 'website',
       jsonLd: {
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: SITE.name,
-        url: absoluteUrl(''),
-        description: SITE.description,
+        '@context': 'https://schema.org', '@type': 'Organization',
+        name: SITE.name, url: absoluteUrl(''), description: SITE.description,
         founder: { '@type': 'Person', name: OWNER.name, url: absoluteUrl('about/') },
         sameAs: [OWNER.githubUrl],
       },
     });
 
-    const mount = document.getElementById('system-map');
-    if (mount) initSystemMap(mount);
-
-    function releaseRow(r, data) {
-      const product = findBySlug(data.projects, r.product);
-      return el('article', { class: 'release' }, [
-        el('div', { class: 'release-side' }, [
-          el('span', { class: 'version' }, [r.version]),
-          el('span', { class: 'release-date' }, [formatDate(r.date)]),
-        ]),
-        el('div', { class: 'release-body' }, [
-          el('h3', { class: 'release-title' }, [r.title]),
-          el('p', { class: 'release-summary' }, [r.summary]),
-          el('div', { class: 'release-tags' }, [
-            el('span', { class: 'card-meta' }, [product ? product.name : r.product]),
-            (r.tags || []).map((t) => el('span', { class: 'tag' }, [t])),
-            r.breaking ? el('span', { class: 'flag-breaking' }, ['Breaking']) : null,
-          ]),
-        ]),
-      ]);
-    }
-
-    function postCard(p) {
-      return el('article', { class: 'post-card' }, [
-        el('div', { class: 'post-meta' }, [
-          el('span', { class: 'chip-kind' }, [p.kind]),
-          el('span', {}, [formatDate(p.date)]),
-          el('span', {}, [(p.minutes || 1) + ' min read']),
-        ]),
-        el('h3', { class: 'post-title' }, [
-          el('a', { href: url('p/' + p.slug + '/') }, [p.title]),
-        ]),
-        el('p', { class: 'post-dek' }, [p.dek || '']),
-      ]);
-    }
-
-    function pipelineRow(p) {
-      return el('div', { class: 'cap-row' }, [
-        el('h3', { class: 'cap-term' }, [
-          el('a', { href: url(p.page || ('work/' + p.slug + '/')) }, [p.name]),
-        ]),
-        el('p', { class: 'cap-desc' }, [
-          (p.tagline || '') + ' ' + (LABELS.statusSentence[p.status] || ''),
-        ]),
-      ]);
-    }
-
     loadManifest().then((data) => {
-      // Upgrade the footer's product column now that the manifest is known.
-      const foot = document.querySelector('.site-footer');
-      if (foot) {
-        foot.replaceWith(buildFooter(data.projects));
-        refreshShell();
-      }
-
       const releases = getReleases(data).slice(0, 5);
       const relSection = document.getElementById('updates');
       if (releases.length && relSection) {
         const list = relSection.querySelector('[data-home-releases]');
         clear(list);
-        releases.forEach((r) => list.appendChild(releaseRow(r, data)));
+        releases.forEach((r) => {
+          const product = findBySlug(data.projects, r.product);
+          list.appendChild(el('article', { class: 'release' }, [
+            el('div', { class: 'release-side' }, [
+              el('span', { class: 'version' }, [r.version]),
+              el('span', { class: 'release-date' }, [formatDate(r.date)]),
+            ]),
+            el('div', { class: 'release-body' }, [
+              el('h3', { class: 'release-title' }, [r.title]),
+              el('p', { class: 'release-summary' }, [r.summary]),
+              el('div', { class: 'release-tags' }, [
+                el('span', { class: 'card-meta' }, [product ? product.name : r.product]),
+                (r.tags || []).map((t) => el('span', { class: 'tag' }, [t])),
+              ]),
+            ]),
+          ]));
+        });
         relSection.hidden = false;
       }
 
@@ -447,20 +253,18 @@
       if (posts.length && postSection) {
         const list = postSection.querySelector('[data-home-posts]');
         clear(list);
-        posts.forEach((p) => list.appendChild(postCard(p)));
+        posts.forEach((p) => list.appendChild(el('article', { class: 'post-card' }, [
+          el('div', { class: 'post-meta' }, [
+            el('span', { class: 'chip-kind' }, [p.kind]),
+            el('span', {}, [formatDate(p.date)]),
+            el('span', {}, [(p.minutes || 1) + ' min read']),
+          ]),
+          el('h3', { class: 'post-title' }, [el('a', { href: url('p/' + p.slug + '/') }, [p.title])]),
+          el('p', { class: 'post-dek' }, [p.dek || '']),
+        ])));
         postSection.hidden = false;
       }
-
-      const pipeline = getProjects(data).filter((p) => p.status && p.status !== 'live');
-      const pipelineList = document.getElementById('pipeline-list');
-      if (pipelineList && pipeline.length) {
-        pipeline.slice().reverse().forEach((p) => {
-          pipelineList.insertBefore(pipelineRow(p), pipelineList.firstChild);
-        });
-      }
-    }).catch(() => {
-      // The System Map surfaces its own error with a Retry action.
-    });
+    }).catch(() => { /* the map surfaces its own error with a Retry action */ });
   </script>
 </body>
 </html>
