@@ -1,4 +1,3 @@
-<!-- Repo: studio — work/index.html — NEW FILE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,35 +32,26 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-nav" data-nav>
-    <div class="container nav-bar">
-      <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
-        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-        <span>LegendAlive Studio</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="../">Home</a>
-        <a href="./">Work</a>
-        <a href="../#capabilities">Capabilities</a>
-        <a href="../#developer">The developer</a>
-        <a href="../#contact">Contact</a>
-        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <button class="nav-toggle" type="button" data-nav-toggle
-              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
-      <a href="../">Home</a>
-      <a href="./">Work</a>
-      <a href="../#capabilities">Capabilities</a>
-      <a href="../#developer">The developer</a>
-      <a href="../#contact">Contact</a>
-      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio</span>
-    </nav>
-  </header>
+  <div data-chrome-nav>
+    <noscript>
+      <header class="site-nav">
+        <div class="container nav-bar">
+          <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
+            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+            <span>LegendAlive Studio</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="./" aria-current="true">Work</a>
+            <a href="../writing/">Writing</a>
+            <a href="../#capabilities">Capabilities</a>
+            <a href="../about/">The developer</a>
+            <a href="../#contact">Contact</a>
+            <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+          </nav>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="main">
     <section class="page-head" aria-labelledby="work-title">
@@ -81,13 +71,17 @@
             <div class="list-flow">
               <article class="post-card">
                 <h2 class="post-title"><a href="weaver/">Weaver</a></h2>
-                <p class="post-dek">A privacy-first novel-writing studio that runs entirely in the browser. Native ES modules, Supabase, Deno, Postgres, Cloudflare Pages.</p>
+                <p class="post-dek">A privacy-first novel-writing studio that runs entirely in the browser. Native ES modules, Supabase, Deno, Postgres, Cloudflare Pages. Live.</p>
                 <p class="card-links"><a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Open app</a></p>
               </article>
               <article class="post-card">
                 <h2 class="post-title"><a href="repobundle/">RepoBundle</a></h2>
-                <p class="post-dek">A zipped repository becomes one verbatim, AI-ready context file without leaving the browser. React, TypeScript, Vite, Tailwind CSS, JSZip.</p>
+                <p class="post-dek">A zipped repository becomes one verbatim, AI-ready context file without leaving the browser. React, TypeScript, Vite, Tailwind CSS, JSZip. Live.</p>
                 <p class="card-links"><a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">Open app</a> <a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">Source</a></p>
+              </article>
+              <article class="post-card">
+                <h2 class="post-title"><a href="swingmatrix/">SwingMatrix</a></h2>
+                <p class="post-dek">A game-theory and statistical scenario engine for Kenyan elections, where the assumptions are the interface. In development.</p>
               </article>
             </div>
           </noscript>
@@ -96,54 +90,45 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <span class="footer-brand-name">LegendAlive Studio</span>
-          <p class="footer-tagline">We build software and keep it running.</p>
+  <div data-chrome-footer>
+    <noscript>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-bottom">
+            <span>© 2026 Benson Mtsotso</span>
+            <span>
+              <a href="../">Home</a> · <a href="../writing/">Writing</a> ·
+              <a href="../about/">The developer</a> ·
+              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
+            </span>
+          </div>
         </div>
-        <nav class="footer-col" aria-label="Studio">
-          <h3>Studio</h3>
-          <ul role="list">
-            <li><a href="../">Home</a></li>
-            <li><a href="./">Work</a></li>
-            <li><a href="../#capabilities">Capabilities</a></li>
-            <li><a href="../#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Products">
-          <h3>Products</h3>
-          <ul role="list">
-            <li><a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver app</a></li>
-            <li><a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Weaver product site</a></li>
-            <li><a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle app</a></li>
-            <li><a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">RepoBundle source</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Elsewhere">
-          <h3>Elsewhere</h3>
-          <ul role="list">
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
-            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
-            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Benson Mtsotso</span>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </noscript>
+  </div>
 
   <script type="module">
+    import { el } from '../assets/js/dom.js';
+    import { refreshShell } from '../assets/js/shell.js';
+    import { renderChrome, buildFooter, applyMeta, LABELS } from '../assets/js/chrome.js';
     import { loadManifest, getProjects } from '../assets/js/manifest.js';
     import { createListing } from '../assets/js/listing.js';
-    import { el } from '../assets/js/dom.js';
 
-    const STATUS = { live: 'Live', building: 'In development', lab: 'Experiment', paused: 'Paused' };
-    const CATEGORY = { product: 'Product', tool: 'Developer tool', experiment: 'Experiment', client: 'Client work' };
+    renderChrome({ current: 'work' });
+
+    applyMeta({
+      title: 'Work — LegendAlive Studio',
+      description: 'Products designed, built and operated by LegendAlive Studio. Each entry links to a case study and the live product.',
+      path: 'work/',
+      type: 'website',
+    });
+
+    function upgradeFooter(projects) {
+      const foot = document.querySelector('.site-footer');
+      if (!foot) return;
+      foot.replaceWith(buildFooter(projects));
+      refreshShell();
+    }
 
     function optionsFor(key, labels, order) {
       return (items) => order
@@ -164,8 +149,11 @@
       if (p.links && p.links.source) {
         links.push(el('a', { href: p.links.source, target: '_blank', rel: 'noopener' }, ['Source']));
       }
-      const meta = [p.year, CATEGORY[p.category] || p.category, STATUS[p.status] || p.status]
-        .filter(Boolean).join(' · ');
+      const meta = [
+        p.year,
+        LABELS.category[p.category] || p.category,
+        LABELS.status[p.status] || p.status,
+      ].filter(Boolean).join(' · ');
 
       return el('article', { class: 'card' }, [
         el('div', { class: 'card-body' }, [
@@ -184,11 +172,23 @@
     if (mount) {
       createListing({
         mount,
-        load: async () => getProjects(await loadManifest()),
+        load: async () => {
+          const data = await loadManifest();
+          upgradeFooter(data.projects);
+          return getProjects(data);
+        },
         defaults: { q: '', sort: 'featured', status: '', category: '' },
         filters: [
-          { key: 'status', label: 'Status', options: optionsFor('status', STATUS, ['live', 'building', 'lab', 'paused']) },
-          { key: 'category', label: 'Category', options: optionsFor('category', CATEGORY, ['product', 'tool', 'experiment', 'client']) },
+          {
+            key: 'status',
+            label: 'Status',
+            options: optionsFor('status', LABELS.status, ['live', 'building', 'lab', 'paused']),
+          },
+          {
+            key: 'category',
+            label: 'Category',
+            options: optionsFor('category', LABELS.category, ['product', 'tool', 'experiment', 'client']),
+          },
         ],
         sorts: [
           { value: 'featured', label: 'Featured' },
