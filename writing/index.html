@@ -32,35 +32,26 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-nav" data-nav>
-    <div class="container nav-bar">
-      <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
-        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-        <span>LegendAlive Studio</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="../">Home</a>
-        <a href="../work/">Work</a>
-        <a href="./">Writing</a>
-        <a href="../about/">The developer</a>
-        <a href="../#contact">Contact</a>
-        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <button class="nav-toggle" type="button" data-nav-toggle
-              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
-      <a href="../">Home</a>
-      <a href="../work/">Work</a>
-      <a href="./">Writing</a>
-      <a href="../about/">The developer</a>
-      <a href="../#contact">Contact</a>
-      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio</span>
-    </nav>
-  </header>
+  <div data-chrome-nav>
+    <noscript>
+      <header class="site-nav">
+        <div class="container nav-bar">
+          <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
+            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+            <span>LegendAlive Studio</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="../work/">Work</a>
+            <a href="./" aria-current="true">Writing</a>
+            <a href="../#capabilities">Capabilities</a>
+            <a href="../about/">The developer</a>
+            <a href="../#contact">Contact</a>
+            <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+          </nav>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="main">
     <section class="page-head" aria-labelledby="writing-title">
@@ -92,59 +83,46 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <span class="footer-brand-name">LegendAlive Studio</span>
-          <p class="footer-tagline">We build software and keep it running.</p>
+  <div data-chrome-footer>
+    <noscript>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-bottom">
+            <span>© 2026 Benson Mtsotso</span>
+            <span>
+              <a href="../">Home</a> · <a href="../work/">Work</a> ·
+              <a href="../about/">The developer</a> ·
+              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
+            </span>
+          </div>
         </div>
-        <nav class="footer-col" aria-label="Studio">
-          <h3>Studio</h3>
-          <ul role="list">
-            <li><a href="../">Home</a></li>
-            <li><a href="../work/">Work</a></li>
-            <li><a href="./">Writing</a></li>
-            <li><a href="../about/">The developer</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Products">
-          <h3>Products</h3>
-          <ul role="list">
-            <li><a href="../work/weaver/">Weaver case study</a></li>
-            <li><a href="../work/repobundle/">RepoBundle case study</a></li>
-            <li><a href="../work/swingmatrix/">SwingMatrix brief</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Elsewhere">
-          <h3>Elsewhere</h3>
-          <ul role="list">
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
-            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
-            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Benson Mtsotso</span>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </noscript>
+  </div>
 
   <script type="module">
     import { url } from '../assets/js/config.js';
     import { el, clear } from '../assets/js/dom.js';
+    import { refreshShell } from '../assets/js/shell.js';
+    import { renderChrome, buildFooter, applyMeta, LABELS } from '../assets/js/chrome.js';
     import { loadManifest, getPosts, allTags, formatDate } from '../assets/js/manifest.js';
     import { createListing } from '../assets/js/listing.js';
 
-    const KINDS = {
-      engineering: 'Engineering',
-      design: 'Design',
-      decision: 'Decision',
-      note: 'Note',
-      release: 'Release',
-    };
+    renderChrome({ current: 'writing' });
+
+    applyMeta({
+      title: 'Writing — LegendAlive Studio',
+      description: 'Notes from the build: architecture decisions, performance work and the bugs that taught something. Engineering writing from LegendAlive Studio.',
+      path: 'writing/',
+      type: 'website',
+    });
+
+    function upgradeFooter(projects) {
+      const foot = document.querySelector('.site-footer');
+      if (!foot) return;
+      foot.replaceWith(buildFooter(projects));
+      refreshShell();
+    }
 
     function postCard(p) {
       return el('article', { class: 'post-card' }, [
@@ -179,9 +157,9 @@
 
     async function init() {
       if (!mount) return;
-      let posts;
+      let data;
       try {
-        posts = getPosts(await loadManifest());
+        data = await loadManifest();
       } catch (err) {
         clear(mount);
         mount.appendChild(el('div', { class: 'empty' }, [
@@ -190,6 +168,9 @@
         ]));
         return;
       }
+
+      upgradeFooter(data.projects);
+      const posts = getPosts(data);
 
       if (!posts.length) {
         emptySurface(mount);
@@ -205,9 +186,9 @@
           {
             key: 'kind',
             label: 'Kind',
-            options: (items) => Object.keys(KINDS)
+            options: (items) => Object.keys(LABELS.kind)
               .filter((k) => items.some((p) => p.kind === k))
-              .map((k) => ({ value: k, label: KINDS[k], count: items.filter((p) => p.kind === k).length })),
+              .map((k) => ({ value: k, label: LABELS.kind[k], count: items.filter((p) => p.kind === k).length })),
           },
           {
             key: 'tags',
