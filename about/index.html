@@ -1,4 +1,3 @@
-<!-- Repo: studio — about/index.html — NEW FILE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,54 +29,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Benson Mtsotso",
-    "jobTitle": "Software developer",
-    "description": "Self-taught developer building complete software products: interface, engine, backend and deployment pipeline.",
-    "url": "https://legendalive.github.io/studio/about/",
-    "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
-    "worksFor": { "@type": "Organization", "name": "LegendAlive Studio" },
-    "sameAs": ["https://github.com/legendalive"]
-  }
-  </script>
-
   <script type="module" src="../assets/js/shell.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-nav" data-nav>
-    <div class="container nav-bar">
-      <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
-        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-        <span>LegendAlive Studio</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="../">Home</a>
-        <a href="../work/">Work</a>
-        <a href="../#capabilities">Capabilities</a>
-        <a href="./">The developer</a>
-        <a href="../#contact">Contact</a>
-        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <button class="nav-toggle" type="button" data-nav-toggle
-              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
-      <a href="../">Home</a>
-      <a href="../work/">Work</a>
-      <a href="../#capabilities">Capabilities</a>
-      <a href="./">The developer</a>
-      <a href="../#contact">Contact</a>
-      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio</span>
-    </nav>
-  </header>
+  <div data-chrome-nav>
+    <noscript>
+      <header class="site-nav">
+        <div class="container nav-bar">
+          <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
+            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+            <span>LegendAlive Studio</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="../work/">Work</a>
+            <a href="../writing/">Writing</a>
+            <a href="../#capabilities">Capabilities</a>
+            <a href="./" aria-current="true">The developer</a>
+            <a href="../#contact">Contact</a>
+            <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+          </nav>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="main">
     <!-- ================= HEAD ================= -->
@@ -477,52 +453,51 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <span class="footer-brand-name">LegendAlive Studio</span>
-          <p class="footer-tagline">We build software and keep it running.</p>
+  <div data-chrome-footer>
+    <noscript>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-bottom">
+            <span>© 2026 Benson Mtsotso</span>
+            <span>
+              <a href="../">Home</a> · <a href="../work/">Work</a> ·
+              <a href="../writing/">Writing</a> ·
+              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
+            </span>
+          </div>
         </div>
-        <nav class="footer-col" aria-label="Studio">
-          <h3>Studio</h3>
-          <ul role="list">
-            <li><a href="../">Home</a></li>
-            <li><a href="../work/">Work</a></li>
-            <li><a href="./">The developer</a></li>
-            <li><a href="../#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Products">
-          <h3>Products</h3>
-          <ul role="list">
-            <li><a href="../work/weaver/">Weaver case study</a></li>
-            <li><a href="../work/repobundle/">RepoBundle case study</a></li>
-            <li><a href="../work/swingmatrix/">SwingMatrix brief</a></li>
-            <li><a href="https://legendalive.github.io/RepoBundle/" target="_blank" rel="noopener">RepoBundle app</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Elsewhere">
-          <h3>Elsewhere</h3>
-          <ul role="list">
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
-            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
-            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Benson Mtsotso</span>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </noscript>
+  </div>
 
   <script type="module">
-    import { ensureStylesheet } from '../assets/js/shell.js';
+    import { SITE, OWNER } from '../assets/js/config.js';
     import { copyText, toast } from '../assets/js/dom.js';
+    import { ensureStylesheet, refreshShell } from '../assets/js/shell.js';
+    import { renderChrome, buildFooter, applyMeta, absoluteUrl } from '../assets/js/chrome.js';
+    import { loadManifest } from '../assets/js/manifest.js';
 
     ensureStylesheet('ls-css-prose', 'assets/css/prose.css');
+    renderChrome({ current: 'about' });
+
+    applyMeta({
+      title: 'Benson Mtsotso — The developer — LegendAlive Studio',
+      ogTitle: 'Benson Mtsotso — The developer',
+      description: 'A self-taught developer in Nairobi who builds complete products alone, from the interface to the deployment pipeline, and writes down what broke along the way.',
+      path: 'about/',
+      type: 'profile',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: OWNER.name,
+        jobTitle: 'Software developer',
+        description: 'Self-taught developer building complete software products: interface, engine, backend and deployment pipeline.',
+        url: absoluteUrl('about/'),
+        address: { '@type': 'PostalAddress', addressLocality: 'Nairobi', addressCountry: 'KE' },
+        worksFor: { '@type': 'Organization', name: SITE.name, url: absoluteUrl('') },
+        sameAs: [OWNER.githubUrl],
+      },
+    });
 
     const copyBtn = document.getElementById('copy-link');
     if (copyBtn) {
@@ -534,6 +509,16 @@
         );
       });
     }
+
+    loadManifest().then((data) => {
+      const foot = document.querySelector('.site-footer');
+      if (foot) {
+        foot.replaceWith(buildFooter(data.projects));
+        refreshShell();
+      }
+    }).catch(() => {
+      // The footer keeps its fallback link to the work index.
+    });
   </script>
 </body>
 </html>
