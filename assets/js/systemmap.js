@@ -1,26 +1,19 @@
-// Repo: studio — assets/js/systemmap.js — FULL REPLACEMENT
-// LegendAlive Studio — the System Map (plan section 7).
+// LegendAlive Studio — the System Map.
 // Reads content/index.json through manifest.js. Nodes are products and
 // capabilities; edges are the real capability dependencies in the manifest.
 // Product nodes open the internal case study; the card keeps a separate
-// "Open app" action. One rAF loop, transforms only, paused when hidden or
-// off-screen. No innerHTML. SVG nodes are built with createElementNS.
+// "Open app" action. Labels come from chrome.js so every surface agrees.
+// One rAF loop, transforms only, paused when hidden or off-screen.
 
 import { url } from './config.js';
 import { el, clear, on } from './dom.js';
+import { LABELS } from './chrome.js';
 import { loadManifest, getProjects, getCapabilities } from './manifest.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MOTION_KEY = 'ls-map-motion';
 const W = 640;
 const H = 470;
-
-const STATUS_LABEL = {
-  live: 'Live',
-  building: 'In development',
-  lab: 'Experiment',
-  paused: 'Paused',
-};
 
 function svgEl(tag, attrs = {}, children = []) {
   const node = document.createElementNS(SVG_NS, tag);
@@ -48,19 +41,18 @@ function writeMotionPref(value) {
   try { localStorage.setItem(MOTION_KEY, value ? 'on' : 'off'); } catch (err) { /* ignore */ }
 }
 
+function statusText(project) {
+  return LABELS.status[project.status] || project.status || '';
+}
+
 function kindLabel(node) {
   if (node.kind === 'capability') return 'Capability';
-  const c = node.ref.category;
-  if (c === 'tool') return 'Developer tool';
-  if (c === 'experiment') return 'Experiment';
-  if (c === 'client') return 'Client work';
-  return 'Product';
+  return LABELS.category[node.ref.category] || 'Product';
 }
 
 function nodeAriaLabel(node) {
   if (node.kind === 'capability') return node.name + ', capability';
-  return node.name + ', ' + kindLabel(node).toLowerCase() + ', ' +
-    (STATUS_LABEL[node.ref.status] || node.ref.status);
+  return node.name + ', ' + kindLabel(node).toLowerCase() + ', ' + statusText(node.ref);
 }
 
 // Internal case-study route, built from BASE so it survives the domain cutover.
@@ -72,8 +64,6 @@ function appHref(project) {
   return (project.links && project.links.app) || '';
 }
 
-// initSystemMap(mount) renders the map into mount. Safe to call again on the
-// same mount (the previous instance is destroyed first).
 export async function initSystemMap(mount) {
   if (!mount) return undefined;
   if (typeof mount.__mapDestroy === 'function') mount.__mapDestroy();
@@ -142,7 +132,6 @@ function buildMap(mount, projects, capabilities) {
     });
   });
 
-  // Drift parameters: amplitude <= 3px, period 12-20s, random phase.
   nodes.forEach((n) => {
     n.amp = 2 + Math.random();
     n.period = 12000 + Math.random() * 8000;
@@ -225,7 +214,7 @@ function buildMap(mount, projects, capabilities) {
       const p = n.ref;
       const app = appHref(p);
       card.appendChild(el('p', { class: 'map-card-kind' }, [
-        kindLabel(n) + ' · ' + (STATUS_LABEL[p.status] || p.status),
+        kindLabel(n) + ' · ' + statusText(p),
       ]));
       card.appendChild(el('h3', {}, [p.name]));
       card.appendChild(el('p', {}, [p.tagline || '']));
@@ -302,7 +291,7 @@ function buildMap(mount, projects, capabilities) {
     window.setTimeout(() => row.classList.remove('is-flash'), 1400);
   }
 
-  /* ---------- Keyboard (single tab stop, roving active descendant) ---------- */
+  /* ---------- Keyboard ---------- */
 
   offs.push(on(canvas, 'keydown', (e) => {
     const list = visibleNodes();
@@ -330,12 +319,12 @@ function buildMap(mount, projects, capabilities) {
     if (document.activeElement !== canvas) clearActive();
   }));
 
-  /* ---------- Mobile list (same data, same filters) ---------- */
+  /* ---------- Mobile list ---------- */
 
   const listEl = el('ul', { class: 'map-list', role: 'list' });
   nodes.forEach((n) => {
     const meta = n.kind === 'project'
-      ? kindLabel(n) + ' · ' + (STATUS_LABEL[n.ref.status] || n.ref.status)
+      ? kindLabel(n) + ' · ' + statusText(n.ref)
       : 'Capability';
     const desc = n.kind === 'project' ? (n.ref.tagline || '') : (n.ref.summary || '');
     const btn = el('button', { class: 'map-list-item', type: 'button', onClick: () => navigate(n) }, [
