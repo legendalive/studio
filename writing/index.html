@@ -15,36 +15,24 @@
   <meta property="og:url" content="https://legendalive.github.io/studio/writing/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
   <style>html{background:#06080b;color-scheme:dark}</style>
-  <noscript>
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/layout.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
-  </noscript>
-
+  <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <script type="module" src="../assets/js/shell.js"></script>
+  <script type="module" src="../assets/js/app.js"></script>
 </head>
-<body>
+<body data-nav="writing">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div data-chrome-nav>
     <noscript>
       <header class="site-nav">
         <div class="container nav-bar">
-          <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
-            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-            <span>LegendAlive Studio</span>
-          </a>
+          <a class="nav-brand" href="../"><span class="studio-mark studio-mark--sm" aria-hidden="true"></span><span>LegendAlive Studio</span></a>
           <nav class="nav-links" aria-label="Primary">
-            <a href="../work/">Work</a>
-            <a href="./" aria-current="true">Writing</a>
-            <a href="../#capabilities">Capabilities</a>
-            <a href="../about/">The developer</a>
+            <a href="../work/">Work</a><a href="./" aria-current="true">Writing</a>
+            <a href="../#capabilities">Capabilities</a><a href="../about/">The developer</a>
             <a href="../#contact">Contact</a>
             <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
           </nav>
@@ -71,9 +59,9 @@
           <noscript>
             <div class="empty">
               <p>
-                The article index is filtered and searched in the browser, so
-                it needs JavaScript. The engineering is also written up in the
-                case studies, which read fully without it.
+                The article index is built in the browser, so it needs
+                JavaScript. The engineering is also written up in the case
+                studies, which read fully without it.
               </p>
               <a class="btn btn--primary" href="../work/">See the work</a>
             </div>
@@ -85,43 +73,24 @@
 
   <div data-chrome-footer>
     <noscript>
-      <footer class="site-footer">
-        <div class="container">
-          <div class="footer-bottom">
-            <span>© 2026 Benson Mtsotso</span>
-            <span>
-              <a href="../">Home</a> · <a href="../work/">Work</a> ·
-              <a href="../about/">The developer</a> ·
-              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
-            </span>
-          </div>
-        </div>
-      </footer>
+      <footer class="site-footer"><div class="container"><div class="footer-bottom">
+        <span>© 2026 Benson Mtsotso</span>
+        <span><a href="../">Home</a> · <a href="../work/">Work</a> · <a href="../about/">The developer</a> · <a href="mailto:mbenson.mb62@gmail.com">Email</a></span>
+      </div></div></footer>
     </noscript>
   </div>
 
   <script type="module">
-    import { url } from '../assets/js/config.js';
-    import { el, clear } from '../assets/js/dom.js';
-    import { refreshShell } from '../assets/js/shell.js';
-    import { renderChrome, buildFooter, applyMeta, LABELS } from '../assets/js/chrome.js';
-    import { loadManifest, getPosts, allTags, formatDate } from '../assets/js/manifest.js';
-    import { createListing } from '../assets/js/listing.js';
+    import { url, el, clear, loadManifest, getPosts, formatDate } from '../assets/js/app.js';
 
-    renderChrome({ current: 'writing' });
+    const mount = document.getElementById('writing-listing');
 
-    applyMeta({
-      title: 'Writing — LegendAlive Studio',
-      description: 'Notes from the build: architecture decisions, performance work and the bugs that taught something. Engineering writing from LegendAlive Studio.',
-      path: 'writing/',
-      type: 'website',
-    });
-
-    function upgradeFooter(projects) {
-      const foot = document.querySelector('.site-footer');
-      if (!foot) return;
-      foot.replaceWith(buildFooter(projects));
-      refreshShell();
+    function loading() {
+      return el('div', { class: 'skeleton', 'aria-label': 'Loading articles' }, [
+        el('div', { class: 'skeleton-line skeleton-line--title' }),
+        el('div', { class: 'skeleton-line' }),
+        el('div', { class: 'skeleton-line skeleton-line--short' }),
+      ]);
     }
 
     function postCard(p) {
@@ -135,28 +104,17 @@
           el('a', { href: url('p/' + p.slug + '/') }, [p.title]),
         ]),
         el('p', { class: 'post-dek' }, [p.dek || '']),
-        el('div', { class: 'post-tags' },
-          (p.tags || []).map((t) => el('span', { class: 'tag' }, [t]))),
+        (p.tags || []).length
+          ? el('div', { class: 'post-tags' }, p.tags.map((t) => el('span', { class: 'tag' }, [t])))
+          : null,
       ]);
     }
 
-    function emptySurface(mount) {
-      clear(mount);
-      mount.appendChild(el('div', { class: 'empty' }, [
-        el('p', {}, [
-          'Nothing published yet. The first essays are drafted from the Weaver build and are being reviewed before they go live. The engineering is already written up in the case studies.',
-        ]),
-        el('div', { class: 'btn-row' }, [
-          el('a', { class: 'btn btn--primary', href: url('work/') }, ['See the work']),
-          el('a', { class: 'btn btn--ghost', href: url('about/') }, ['The developer']),
-        ]),
-      ]));
-    }
-
-    const mount = document.getElementById('writing-listing');
-
     async function init() {
       if (!mount) return;
+      clear(mount);
+      mount.appendChild(loading());
+
       let data;
       try {
         data = await loadManifest();
@@ -169,49 +127,25 @@
         return;
       }
 
-      upgradeFooter(data.projects);
       const posts = getPosts(data);
+      clear(mount);
 
       if (!posts.length) {
-        emptySurface(mount);
+        mount.appendChild(el('div', { class: 'empty' }, [
+          el('p', {}, [
+            'Nothing published yet. The first essays are drafted from the Weaver build and are being reviewed before they go live. The engineering is already written up in the case studies.',
+          ]),
+          el('div', { class: 'btn-row' }, [
+            el('a', { class: 'btn btn--primary', href: url('work/') }, ['See the work']),
+            el('a', { class: 'btn btn--ghost', href: url('about/') }, ['The developer']),
+          ]),
+        ]));
         return;
       }
 
-      clear(mount);
-      createListing({
-        mount,
-        load: posts,
-        defaults: { q: '', sort: 'newest', kind: '', tags: [] },
-        filters: [
-          {
-            key: 'kind',
-            label: 'Kind',
-            options: (items) => Object.keys(LABELS.kind)
-              .filter((k) => items.some((p) => p.kind === k))
-              .map((k) => ({ value: k, label: LABELS.kind[k], count: items.filter((p) => p.kind === k).length })),
-          },
-          {
-            key: 'tags',
-            label: 'Tags',
-            multi: true,
-            options: (items) => allTags(items).map((t) => ({ value: t.tag, label: t.tag, count: t.count })),
-          },
-        ],
-        sorts: [
-          { value: 'newest', label: 'Newest' },
-          { value: 'oldest', label: 'Oldest' },
-          { value: 'az', label: 'A to Z' },
-        ],
-        query: (items, s) => getPosts({ posts: items }, {
-          query: s.q, tags: s.tags, kind: s.kind, sort: s.sort,
-        }),
-        renderItem: postCard,
-        count: (shown) => shown.length + (shown.length === 1 ? ' article' : ' articles'),
-        resultsClass: 'list-flow',
-        searchLabel: 'Search writing',
-        searchPlaceholder: 'Search title, summary or tag',
-        emptyMessage: 'No articles match these filters.',
-      });
+      const list = el('div', { class: 'list-flow' });
+      posts.forEach((p) => list.appendChild(postCard(p)));
+      mount.appendChild(list);
     }
 
     init();
