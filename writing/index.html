@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing — LegendAlive Studio</title>
+  <meta name="description" content="Notes from the build: architecture decisions, performance work and the bugs that taught something. Engineering writing from LegendAlive Studio.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06080b">
+  <link rel="canonical" href="https://legendalive.github.io/studio/writing/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LegendAlive Studio">
+  <meta property="og:title" content="Writing — LegendAlive Studio">
+  <meta property="og:description" content="Architecture decisions, performance work and the bugs that taught something.">
+  <meta property="og:url" content="https://legendalive.github.io/studio/writing/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <style>html{background:#06080b;color-scheme:dark}</style>
+  <noscript>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+  </noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script type="module" src="../assets/js/shell.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav" data-nav>
+    <div class="container nav-bar">
+      <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
+        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+        <span>LegendAlive Studio</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../">Home</a>
+        <a href="../work/">Work</a>
+        <a href="./">Writing</a>
+        <a href="../about/">The developer</a>
+        <a href="../#contact">Contact</a>
+        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
+      <a href="../">Home</a>
+      <a href="../work/">Work</a>
+      <a href="./">Writing</a>
+      <a href="../about/">The developer</a>
+      <a href="../#contact">Contact</a>
+      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+      <span class="nav-sheet-note">LegendAlive Studio</span>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-head" aria-labelledby="writing-title">
+      <div class="container">
+        <h1 id="writing-title">Writing</h1>
+        <p class="lede">
+          Notes from the build: architecture decisions, performance work, and
+          the bugs that taught something. Every piece is drawn from a product
+          that shipped.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-label="Article index">
+      <div class="container">
+        <div id="writing-listing">
+          <noscript>
+            <div class="empty">
+              <p>
+                The article index is filtered and searched in the browser, so
+                it needs JavaScript. The engineering is also written up in the
+                case studies, which read fully without it.
+              </p>
+              <a class="btn btn--primary" href="../work/">See the work</a>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
+          <span class="footer-brand-name">LegendAlive Studio</span>
+          <p class="footer-tagline">We build software and keep it running.</p>
+        </div>
+        <nav class="footer-col" aria-label="Studio">
+          <h3>Studio</h3>
+          <ul role="list">
+            <li><a href="../">Home</a></li>
+            <li><a href="../work/">Work</a></li>
+            <li><a href="./">Writing</a></li>
+            <li><a href="../about/">The developer</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Products">
+          <h3>Products</h3>
+          <ul role="list">
+            <li><a href="../work/weaver/">Weaver case study</a></li>
+            <li><a href="../work/repobundle/">RepoBundle case study</a></li>
+            <li><a href="../work/swingmatrix/">SwingMatrix brief</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Elsewhere">
+          <h3>Elsewhere</h3>
+          <ul role="list">
+            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
+            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
+            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Benson Mtsotso</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { url } from '../assets/js/config.js';
+    import { el, clear } from '../assets/js/dom.js';
+    import { loadManifest, getPosts, allTags, formatDate } from '../assets/js/manifest.js';
+    import { createListing } from '../assets/js/listing.js';
+
+    const KINDS = {
+      engineering: 'Engineering',
+      design: 'Design',
+      decision: 'Decision',
+      note: 'Note',
+      release: 'Release',
+    };
+
+    function postCard(p) {
+      return el('article', { class: 'post-card' }, [
+        el('div', { class: 'post-meta' }, [
+          el('span', { class: 'chip-kind' }, [p.kind || 'note']),
+          el('span', {}, [formatDate(p.date)]),
+          el('span', {}, [(p.minutes || 1) + ' min read']),
+        ]),
+        el('h2', { class: 'post-title' }, [
+          el('a', { href: url('p/' + p.slug + '/') }, [p.title]),
+        ]),
+        el('p', { class: 'post-dek' }, [p.dek || '']),
+        el('div', { class: 'post-tags' },
+          (p.tags || []).map((t) => el('span', { class: 'tag' }, [t]))),
+      ]);
+    }
+
+    function emptySurface(mount) {
+      clear(mount);
+      mount.appendChild(el('div', { class: 'empty' }, [
+        el('p', {}, [
+          'Nothing published yet. The first essays are drafted from the Weaver build and are being reviewed before they go live. The engineering is already written up in the case studies.',
+        ]),
+        el('div', { class: 'btn-row' }, [
+          el('a', { class: 'btn btn--primary', href: url('work/') }, ['See the work']),
+          el('a', { class: 'btn btn--ghost', href: url('about/') }, ['The developer']),
+        ]),
+      ]));
+    }
+
+    const mount = document.getElementById('writing-listing');
+
+    async function init() {
+      if (!mount) return;
+      let posts;
+      try {
+        posts = getPosts(await loadManifest());
+      } catch (err) {
+        clear(mount);
+        mount.appendChild(el('div', { class: 'empty' }, [
+          el('p', {}, [err && err.message ? err.message : 'The content manifest could not be loaded. Check your connection, then retry.']),
+          el('button', { class: 'btn btn--primary', type: 'button', onClick: init }, ['Retry']),
+        ]));
+        return;
+      }
+
+      if (!posts.length) {
+        emptySurface(mount);
+        return;
+      }
+
+      clear(mount);
+      createListing({
+        mount,
+        load: posts,
+        defaults: { q: '', sort: 'newest', kind: '', tags: [] },
+        filters: [
+          {
+            key: 'kind',
+            label: 'Kind',
+            options: (items) => Object.keys(KINDS)
+              .filter((k) => items.some((p) => p.kind === k))
+              .map((k) => ({ value: k, label: KINDS[k], count: items.filter((p) => p.kind === k).length })),
+          },
+          {
+            key: 'tags',
+            label: 'Tags',
+            multi: true,
+            options: (items) => allTags(items).map((t) => ({ value: t.tag, label: t.tag, count: t.count })),
+          },
+        ],
+        sorts: [
+          { value: 'newest', label: 'Newest' },
+          { value: 'oldest', label: 'Oldest' },
+          { value: 'az', label: 'A to Z' },
+        ],
+        query: (items, s) => getPosts({ posts: items }, {
+          query: s.q, tags: s.tags, kind: s.kind, sort: s.sort,
+        }),
+        renderItem: postCard,
+        count: (shown) => shown.length + (shown.length === 1 ? ' article' : ' articles'),
+        resultsClass: 'list-flow',
+        searchLabel: 'Search writing',
+        searchPlaceholder: 'Search title, summary or tag',
+        emptyMessage: 'No articles match these filters.',
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
