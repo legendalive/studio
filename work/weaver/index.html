@@ -1,4 +1,3 @@
-<!-- Repo: studio — work/weaver/index.html — NEW FILE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,57 +29,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Weaver",
-    "description": "A privacy-first novel-writing studio that runs entirely in the browser.",
-    "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "Any",
-    "url": "https://legendalive.github.io/Weaver/",
-    "offers": [
-      { "@type": "Offer", "name": "Monthly", "price": "8", "priceCurrency": "USD", "url": "https://mbenson62.gumroad.com/l/weaver-monthly" },
-      { "@type": "Offer", "name": "Yearly", "price": "60", "priceCurrency": "USD", "url": "https://mbenson62.gumroad.com/l/weaver-yearly" },
-      { "@type": "Offer", "name": "Lifetime", "price": "149", "priceCurrency": "USD", "url": "https://mbenson62.gumroad.com/l/weaver-lifetime" }
-    ]
-  }
-  </script>
-
   <script type="module" src="../../assets/js/shell.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-nav" data-nav>
-    <div class="container nav-bar">
-      <a class="nav-brand" href="../../" aria-label="LegendAlive Studio, home">
-        <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-        <span>LegendAlive Studio</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="../../">Home</a>
-        <a href="../">Work</a>
-        <a href="../../#capabilities">Capabilities</a>
-        <a href="../../#developer">The developer</a>
-        <a href="../../#contact">Contact</a>
-        <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <button class="nav-toggle" type="button" data-nav-toggle
-              aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="nav-sheet" id="nav-sheet" data-nav-sheet aria-label="Mobile">
-      <a href="../../">Home</a>
-      <a href="../">Work</a>
-      <a href="../../#capabilities">Capabilities</a>
-      <a href="../../#developer">The developer</a>
-      <a href="../../#contact">Contact</a>
-      <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
-      <span class="nav-sheet-note">LegendAlive Studio</span>
-    </nav>
-  </header>
+  <div data-chrome-nav>
+    <noscript>
+      <header class="site-nav">
+        <div class="container nav-bar">
+          <a class="nav-brand" href="../../" aria-label="LegendAlive Studio, home">
+            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
+            <span>LegendAlive Studio</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="../" aria-current="true">Work</a>
+            <a href="../../writing/">Writing</a>
+            <a href="../../#capabilities">Capabilities</a>
+            <a href="../../about/">The developer</a>
+            <a href="../../#contact">Contact</a>
+            <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
+          </nav>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="main">
     <!-- ================= HERO ================= -->
@@ -173,6 +146,16 @@
           </svg>
           <figcaption>The three working surfaces. Nothing enters canon without the author accepting it.</figcaption>
         </figure>
+
+        <nav class="pill-row" aria-label="On this page" style="margin-top:28px;gap:12px 26px">
+          <a class="text-link" href="#metrics-title">Measured</a>
+          <a class="text-link" href="#arch-title">Architecture</a>
+          <a class="text-link" href="#subsystems-title">Subsystems</a>
+          <a class="text-link" href="#decisions-title">Decisions</a>
+          <a class="text-link" href="#stack-title">Stack</a>
+          <a class="text-link" href="#war-title">War stories</a>
+          <a class="text-link" href="#next-title">What's next</a>
+        </nav>
       </div>
     </section>
 
@@ -648,56 +631,54 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="studio-mark studio-mark--md" aria-hidden="true"></span>
-          <span class="footer-brand-name">LegendAlive Studio</span>
-          <p class="footer-tagline">We build software and keep it running.</p>
+  <div data-chrome-footer>
+    <noscript>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-bottom">
+            <span>© 2026 Benson Mtsotso</span>
+            <span>
+              <a href="../../">Home</a> · <a href="../">Work</a> ·
+              <a href="../../writing/">Writing</a> ·
+              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
+            </span>
+          </div>
         </div>
-        <nav class="footer-col" aria-label="Studio">
-          <h3>Studio</h3>
-          <ul role="list">
-            <li><a href="../../">Home</a></li>
-            <li><a href="../">Work</a></li>
-            <li><a href="../../#capabilities">Capabilities</a></li>
-            <li><a href="../../#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Products">
-          <h3>Products</h3>
-          <ul role="list">
-            <li><a href="https://legendalive.github.io/Weaver/" target="_blank" rel="noopener">Weaver app</a></li>
-            <li><a href="https://weaver-studio.pages.dev/" target="_blank" rel="noopener">Weaver product site</a></li>
-            <li><a href="https://weaver-studio.pages.dev/pricing" target="_blank" rel="noopener">Weaver pricing</a></li>
-            <li><a href="https://github.com/legendalive/RepoBundle" target="_blank" rel="noopener">RepoBundle source</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-col" aria-label="Elsewhere">
-          <h3>Elsewhere</h3>
-          <ul role="list">
-            <li><a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub profile</a></li>
-            <li><a href="mailto:mbenson.mb62@gmail.com">Email</a></li>
-            <li><a href="https://github.com/legendalive/studio" target="_blank" rel="noopener">This site's source</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Benson Mtsotso</span>
-      </div>
-    </div>
-  </footer>
+      </footer>
+    </noscript>
+  </div>
 
   <script type="module">
-    import { ensureStylesheet } from '../../assets/js/shell.js';
+    import { LINKS } from '../../assets/js/config.js';
     import { copyText, toast } from '../../assets/js/dom.js';
+    import { refreshShell } from '../../assets/js/shell.js';
+    import { renderChrome, buildFooter, applyMeta } from '../../assets/js/chrome.js';
+    import { ensureProseStyles } from '../../assets/js/page.js';
+    import { loadManifest } from '../../assets/js/manifest.js';
 
-    ensureStylesheet('ls-css-prose', 'assets/css/prose.css');
+    ensureProseStyles();
+    renderChrome({ current: 'work' });
 
-    // Mark Work as the current section on this case study.
-    document.querySelectorAll('[data-nav] a[href="../"]').forEach((a) => {
-      a.setAttribute('aria-current', 'true');
+    applyMeta({
+      title: 'Weaver — Case study — LegendAlive Studio',
+      ogTitle: 'Weaver — Case study',
+      description: 'A browser-based novel studio: block engine, canon-aware AI, compressed cloud vault, hand-written export. The engineering behind it.',
+      path: 'work/weaver/',
+      type: 'article',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'Weaver',
+        description: 'A privacy-first novel-writing studio that runs entirely in the browser.',
+        applicationCategory: 'ProductivityApplication',
+        operatingSystem: 'Any',
+        url: LINKS.weaver.app,
+        offers: [
+          { '@type': 'Offer', name: 'Monthly', price: '8', priceCurrency: 'USD', url: LINKS.weaver.monthly },
+          { '@type': 'Offer', name: 'Yearly', price: '60', priceCurrency: 'USD', url: LINKS.weaver.yearly },
+          { '@type': 'Offer', name: 'Lifetime', price: '149', priceCurrency: 'USD', url: LINKS.weaver.lifetime },
+        ],
+      },
     });
 
     const copyBtn = document.getElementById('copy-link');
@@ -710,6 +691,16 @@
         );
       });
     }
+
+    loadManifest().then((data) => {
+      const foot = document.querySelector('.site-footer');
+      if (foot) {
+        foot.replaceWith(buildFooter(data.projects));
+        refreshShell();
+      }
+    }).catch(() => {
+      // The footer keeps its fallback link to the work index.
+    });
   </script>
 </body>
 </html>
