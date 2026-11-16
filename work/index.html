@@ -15,36 +15,24 @@
   <meta property="og:url" content="https://legendalive.github.io/studio/work/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
   <style>html{background:#06080b;color-scheme:dark}</style>
-  <noscript>
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/layout.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
-  </noscript>
-
+  <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <script type="module" src="../assets/js/shell.js"></script>
+  <script type="module" src="../assets/js/app.js"></script>
 </head>
-<body>
+<body data-nav="work">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div data-chrome-nav>
     <noscript>
       <header class="site-nav">
         <div class="container nav-bar">
-          <a class="nav-brand" href="../" aria-label="LegendAlive Studio, home">
-            <span class="studio-mark studio-mark--sm" aria-hidden="true"></span>
-            <span>LegendAlive Studio</span>
-          </a>
+          <a class="nav-brand" href="../"><span class="studio-mark studio-mark--sm" aria-hidden="true"></span><span>LegendAlive Studio</span></a>
           <nav class="nav-links" aria-label="Primary">
-            <a href="./" aria-current="true">Work</a>
-            <a href="../writing/">Writing</a>
-            <a href="../#capabilities">Capabilities</a>
-            <a href="../about/">The developer</a>
+            <a href="./" aria-current="true">Work</a><a href="../writing/">Writing</a>
+            <a href="../#capabilities">Capabilities</a><a href="../about/">The developer</a>
             <a href="../#contact">Contact</a>
             <a href="https://github.com/legendalive" target="_blank" rel="noopener">GitHub</a>
           </nav>
@@ -92,52 +80,24 @@
 
   <div data-chrome-footer>
     <noscript>
-      <footer class="site-footer">
-        <div class="container">
-          <div class="footer-bottom">
-            <span>© 2026 Benson Mtsotso</span>
-            <span>
-              <a href="../">Home</a> · <a href="../writing/">Writing</a> ·
-              <a href="../about/">The developer</a> ·
-              <a href="mailto:mbenson.mb62@gmail.com">Email</a>
-            </span>
-          </div>
-        </div>
-      </footer>
+      <footer class="site-footer"><div class="container"><div class="footer-bottom">
+        <span>© 2026 Benson Mtsotso</span>
+        <span><a href="../">Home</a> · <a href="../writing/">Writing</a> · <a href="../about/">The developer</a> · <a href="mailto:mbenson.mb62@gmail.com">Email</a></span>
+      </div></div></footer>
     </noscript>
   </div>
 
   <script type="module">
-    import { el } from '../assets/js/dom.js';
-    import { refreshShell } from '../assets/js/shell.js';
-    import { renderChrome, buildFooter, applyMeta, LABELS } from '../assets/js/chrome.js';
-    import { loadManifest, getProjects } from '../assets/js/manifest.js';
-    import { createListing } from '../assets/js/listing.js';
+    import { el, clear, LABELS, loadManifest, getProjects } from '../assets/js/app.js';
 
-    renderChrome({ current: 'work' });
+    const mount = document.getElementById('work-listing');
 
-    applyMeta({
-      title: 'Work — LegendAlive Studio',
-      description: 'Products designed, built and operated by LegendAlive Studio. Each entry links to a case study and the live product.',
-      path: 'work/',
-      type: 'website',
-    });
-
-    function upgradeFooter(projects) {
-      const foot = document.querySelector('.site-footer');
-      if (!foot) return;
-      foot.replaceWith(buildFooter(projects));
-      refreshShell();
-    }
-
-    function optionsFor(key, labels, order) {
-      return (items) => order
-        .filter((value) => items.some((item) => item[key] === value))
-        .map((value) => ({
-          value,
-          label: labels[value] || value,
-          count: items.filter((item) => item[key] === value).length,
-        }));
+    function loading() {
+      return el('div', { class: 'skeleton', 'aria-label': 'Loading projects' }, [
+        el('div', { class: 'skeleton-line skeleton-line--title' }),
+        el('div', { class: 'skeleton-line' }),
+        el('div', { class: 'skeleton-line skeleton-line--short' }),
+      ]);
     }
 
     function projectCard(p) {
@@ -162,51 +122,45 @@
             el('span', { class: 'card-meta' }, [meta]),
           ]),
           el('p', { class: 'card-tagline' }, [p.tagline || '']),
-          el('p', { class: 'card-stack' }, [(p.stack || []).join(' · ')]),
+          (p.stack || []).length
+            ? el('p', { class: 'card-stack' }, [p.stack.join(' · ')])
+            : null,
           el('div', { class: 'card-links' }, links),
         ]),
       ]);
     }
 
-    const mount = document.getElementById('work-listing');
-    if (mount) {
-      createListing({
-        mount,
-        load: async () => {
-          const data = await loadManifest();
-          upgradeFooter(data.projects);
-          return getProjects(data);
-        },
-        defaults: { q: '', sort: 'featured', status: '', category: '' },
-        filters: [
-          {
-            key: 'status',
-            label: 'Status',
-            options: optionsFor('status', LABELS.status, ['live', 'building', 'lab', 'paused']),
-          },
-          {
-            key: 'category',
-            label: 'Category',
-            options: optionsFor('category', LABELS.category, ['product', 'tool', 'experiment', 'client']),
-          },
-        ],
-        sorts: [
-          { value: 'featured', label: 'Featured' },
-          { value: 'newest', label: 'Newest' },
-          { value: 'az', label: 'A to Z' },
-        ],
-        query: (items, s) => getProjects({ projects: items }, {
-          status: s.status, category: s.category, query: s.q, sort: s.sort,
-        }),
-        renderItem: projectCard,
-        count: (shown) => shown.length + (shown.length === 1 ? ' project' : ' projects') +
-          ' · ' + shown.filter((p) => p.status === 'live').length + ' live',
-        resultsClass: 'grid-cards',
-        searchLabel: 'Search work',
-        searchPlaceholder: 'Search name, tagline or stack',
-        emptyMessage: 'No projects match these filters.',
-      });
+    async function init() {
+      if (!mount) return;
+      clear(mount);
+      mount.appendChild(loading());
+
+      let data;
+      try {
+        data = await loadManifest();
+      } catch (err) {
+        clear(mount);
+        mount.appendChild(el('div', { class: 'empty' }, [
+          el('p', {}, [err && err.message ? err.message : 'The content manifest could not be loaded. Check your connection, then retry.']),
+          el('button', { class: 'btn btn--primary', type: 'button', onClick: init }, ['Retry']),
+        ]));
+        return;
+      }
+
+      const projects = getProjects(data);
+      clear(mount);
+      if (!projects.length) {
+        mount.appendChild(el('div', { class: 'empty' }, [
+          el('p', {}, ['No projects are listed in the manifest yet.']),
+        ]));
+        return;
+      }
+      const grid = el('div', { class: 'grid-cards' });
+      projects.forEach((p) => grid.appendChild(projectCard(p)));
+      mount.appendChild(grid);
     }
+
+    init();
   </script>
 </body>
 </html>
